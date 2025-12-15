@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- WILD VARIANT -->
+  <SitePartDef>
+    <defName>MRHP_SentinelLair_Wild</defName>
+    <label>sentinel bunker</label>
+    <description>A procedurally generated ancient bunker.</description>
+    <tags><li>MRHP_SentinelLair_Wild</li></tags>
+    <siteTexture>World/WorldObjects/Sites/GenericSite</siteTexture>
+    <expandingIconTexture>World/WorldObjects/Expanding/Sites/AncientMechanitorComplex</expandingIconTexture>
+    <requiresFaction>false</requiresFaction>
+  </SitePartDef>
+
+  <GenStepDef>
+    <defName>MRHP_SentinelLair_Wild_Gen</defName>
+    <linkWithSite>MRHP_SentinelLair_Wild</linkWithSite>
+    <order>470</order>
+    <genStep Class="MRHP.GenStep_SentinelComplex" />
+  </GenStepDef>
+</Defs>

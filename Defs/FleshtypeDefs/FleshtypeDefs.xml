@@ -1,0 +1,21 @@
+<Defs>
+	<FleshTypeDef>
+		<defName>MRHP_JCJensonRobotFlesh</defName>
+		<corpseCategory>CorpsesAnimal</corpseCategory>
+		<damageEffecter>MRC_Damage_HitDrone</damageEffecter>
+		<genericWounds>
+			<li>
+				<texture>Things/Pawn/Wounds/Android_WoundFleshA</texture>
+                <color>(5,5,5)</color>
+			</li>
+			<li>
+				<texture>Things/Pawn/Wounds/Android_WoundFleshB</texture>
+                <color>(5,5,5)</color>
+			</li>
+			<li>
+				<texture>Things/Pawn/Wounds/Android_WoundFleshC</texture>
+                <color>(5,5,5)</color>
+			</li>
+		</genericWounds>
+	</FleshTypeDef>
+</Defs>

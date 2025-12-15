@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <HediffDef Name="MRHP_BootLoopBase" Abstract="true">
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.6, 0.8, 1.0)</defaultLabelColor> <!-- Cyan-ish color -->
+    <isBad>true</isBad>
+    <tendable>true</tendable>
+    <stages>
+      <li>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <setMax>0</setMax>
+          </li>
+        </capMods>
+      </li>
+    </stages>
+    <comps>
+      <li Class="MRHP.HediffCompProperties_RemoveOnTend" />
+      <li Class="HediffCompProperties_TendDuration">
+        <tendAllAtOnce>true</tendAllAtOnce>
+      </li>
+    </comps>
+  </HediffDef>
+
+  <HediffDef ParentName="MRHP_BootLoopBase">
+    <defName>MRHP_BootLoop</defName>
+    <label>Boot-Looped</label>
+    <description>This android's operating system has crashed and is attempting to reboot. The unit is completely unresponsive until the diagnostic cycle completes.</description>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>
+          <min>7200</min> <!-- 2 minutes -->
+          <max>18000</max> <!-- 5 minutes -->
+        </disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+    </comps>
+  </HediffDef>
+
+  <HediffDef ParentName="MRHP_BootLoopBase">
+    <defName>MRHP_BootLoopPerminent</defName>
+    <label>Boot-Looped (Permanent)</label>
+    <description>This android’s operating system has entered a permanent boot loop, locking the unit in a frozen reset state. Unlike temporary crashes, the cycle will never resolve on its own.\n\nThe android remains completely unresponsive until a pawn performs a direct software repair operation to restore functionality.</description>
+    <defaultLabelColor>(0.9, 0.2, 0.2)</defaultLabelColor> <!-- Red color to indicate severity -->
+  </HediffDef>
+
+  <HediffDef>
+    <defName>MRHP_Pinned</defName>
+    <label>pinned down</label>
+    <description>Immobilized under the crushing weight of a hostile entity. The victim has been forced to the ground, unable to leverage their limbs for movement or combat. They are completely at the mercy of their attacker and susceptible to execution maneuvers. Escape requires significant physical struggle or external intervention.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.9, 0.2, 0.2)</defaultLabelColor>
+    <isBad>true</isBad>
+    <maxSeverity>1.0</maxSeverity>
+    <!-- Mechanical breakdown for the player -->
+    <extraTooltip>Forces the victim into a Downed state.
+Movement and Manipulation are reduced to 0%.
+Breakout chance is calculated based on Melee skill, repeated struggle attempts, and the Body Size difference between the victim and the attacker.</extraTooltip>
+    <stages>
+      <li>
+        <capMods>
+          <li>
+            <capacity>Moving</capacity>
+            <setMax>0</setMax> <!-- Forces Downed State -->
+          </li>
+          <li>
+            <capacity>Manipulation</capacity>
+            <setMax>0.5</setMax>
+          </li>
+        </capMods>
+      </li>
+    </stages>
+    <comps>
+      <!-- Custom Comp handles breakout logic -->
+      <li Class="MRHP.HediffCompProperties_Pinned" />
+    </comps>
+  </HediffDef>
+
+</Defs>

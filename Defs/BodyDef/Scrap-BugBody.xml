@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <BodyDef>
+    <defName>MRHP_ScrapBugBody</defName>
+    <label>keybug chassis</label>
+    <corePart>
+      <def>MRHP_ScrapBugCarapace</def>
+      <height>Middle</height>
+      <depth>Outside</depth>
+      <groups>
+        <li>Torso</li> <!-- Valid Vanilla Group -->
+      </groups>
+      <parts>
+        
+        <!-- === INTERNALS === -->
+        <li>
+          <def>MRHP_CoolantPump</def>
+          <coverage>0.05</coverage>
+          <depth>Inside</depth>
+        </li>
+        <li>
+          <def>MRHP_ScrapFurnace</def>
+          <coverage>0.10</coverage>
+          <depth>Inside</depth>
+        </li>
+
+        <!-- === HEAD === -->
+        <li>
+          <def>MRHP_ScrapBugHead</def>
+          <coverage>0.25</coverage>
+          <groups>
+            <li>UpperHead</li> <!-- FIXED: 'Head' is invalid. Use 'UpperHead'. -->
+            <li>FullHead</li>
+            <li>HeadAttackTool</li>
+          </groups>
+          <parts>
+            <!-- Brain -->
+            <li>
+              <def>MRHP_LogicCore</def>
+              <coverage>0.20</coverage>
+              <depth>Inside</depth>
+            </li>
+            
+            <!-- 4 Eyes -->
+            <li><def>MRHP_Photoreceptor</def><customLabel>upper left eye</customLabel><coverage>0.06</coverage><groups><li>Eyes</li></groups></li>
+            <li><def>MRHP_Photoreceptor</def><customLabel>upper right eye</customLabel><coverage>0.06</coverage><groups><li>Eyes</li></groups></li>
+            <li><def>MRHP_Photoreceptor</def><customLabel>lower left eye</customLabel><coverage>0.06</coverage><groups><li>Eyes</li></groups></li>
+            <li><def>MRHP_Photoreceptor</def><customLabel>lower right eye</customLabel><coverage>0.06</coverage><groups><li>Eyes</li></groups></li>
+
+            <!-- Antennae -->
+            <li><def>MRHP_SignalSpire</def><customLabel>left signal spire</customLabel><coverage>0.10</coverage><groups><li>UpperHead</li></groups></li>
+            <li><def>MRHP_SignalSpire</def><customLabel>right signal spire</customLabel><coverage>0.10</coverage><groups><li>UpperHead</li></groups></li>
+            <!-- Mouth -->
+            <li>
+              <def>MRHP_RecyclingMaw</def>
+              <coverage>0.15</coverage>
+              <groups>
+                <li>Mouth</li> <!-- Valid Vanilla Group -->
+              </groups>
+            </li>
+          </parts>
+        </li>
+
+        <!-- === LEGS === -->
+        <li><def>MRHP_MechanicalLeg</def><customLabel>front-left leg</customLabel><coverage>0.08</coverage><groups><li>Legs</li></groups></li>
+        <li><def>MRHP_MechanicalLeg</def><customLabel>front-right leg</customLabel><coverage>0.08</coverage><groups><li>Legs</li></groups></li>
+        <li><def>MRHP_MechanicalLeg</def><customLabel>mid-left leg</customLabel><coverage>0.08</coverage><groups><li>Legs</li></groups></li>
+        <li><def>MRHP_MechanicalLeg</def><customLabel>mid-right leg</customLabel><coverage>0.08</coverage><groups><li>Legs</li></groups></li>
+        <li><def>MRHP_MechanicalLeg</def><customLabel>rear-left leg</customLabel><coverage>0.08</coverage><groups><li>Legs</li></groups></li>
+        <li><def>MRHP_MechanicalLeg</def><customLabel>rear-right leg</customLabel><coverage>0.08</coverage><groups><li>Legs</li></groups></li>
+
+      </parts>
+    </corePart>
+  </BodyDef>
+</Defs>

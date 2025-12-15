@@ -1,0 +1,9 @@
+<Patch>
+  <!-- 1. Spawn Wild Sentinels in Cold Biomes -->
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/BiomeDef[defName="IceSheet" or defName="Tundra" or defName="SeaIce"]/wildAnimals</xpath>
+    <value>
+      <MRHP_Sentinel>0.05</MRHP_Sentinel> <!-- Very rare (5%) -->
+    </value>
+  </Operation>
+</Patch>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <ComplexLayoutDef>
+    <defName>MRHP_Complex_SentinelBunker</defName>
+    <workerClass>MRHP.LayoutWorker_DebugSentinel</workerClass>
+    <roomRewardCrateFactor>0</roomRewardCrateFactor>
+    <minRoomWidth>7</minRoomWidth>
+    <minRoomHeight>7</minRoomHeight>
+    <clearDoorFaction>false</clearDoorFaction>
+    <corridorDef>ComplexCorridor</corridorDef>
+    <importantRoomDef>MRHP_Room_LootVault</importantRoomDef>
+    <canDisconnectRooms>true</canDisconnectRooms>
+
+    <surroundingTerrainDef>AncientTile</surroundingTerrainDef>
+    <surroundingScatterTerrainDef>BrokenAsphalt</surroundingScatterTerrainDef>
+    <areaPrunePercent>0.1</areaPrunePercent>
+    
+    <roomDefs>
+      <!-- CRITICAL ROOMS -->
+      <MRHP_Room_LootVault>
+        <weight>2</weight>
+        <countRange>1~1</countRange>
+      </MRHP_Room_LootVault>
+      <!-- LARGE ROOMS (Offices) -->
+      <MRHP_Room_CorporateBullpen>
+        <weight>1</weight>
+        <countRange>0~1</countRange>
+      </MRHP_Room_CorporateBullpen>
+      <MRHP_Room_AdminOffice>
+        <weight>1</weight>
+        <countRange>0~1</countRange> 
+      </MRHP_Room_AdminOffice>
+      <!-- MEDIUM ROOMS -->
+      <MRHP_Room_SecurityCheckpoint>
+        <weight>1</weight>
+        <countRange>0~2</countRange>
+      </MRHP_Room_SecurityCheckpoint>
+      <MRHP_Room_BreakArea>
+        <weight>1</weight>
+        <countRange>0~1</countRange>
+      </MRHP_Room_BreakArea>
+      <MRHP_Room_Restroom>
+        <weight>1</weight>
+        <countRange>0~2</countRange>
+      </MRHP_Room_Restroom>
+      <!-- LABS -->
+      <MRHP_Room_DissectionLab>
+        <weight>1</weight>
+        <countRange>0~1</countRange> 
+      </MRHP_Room_DissectionLab>
+      <MRHP_Room_ServerArchive>
+        <weight>1</weight>
+        <countRange>0~2</countRange>
+      </MRHP_Room_ServerArchive>
+      <MRHP_Room_ContainmentWard>
+        <weight>1</weight>
+        <countRange>0~3</countRange>
+      </MRHP_Room_ContainmentWard>
+      <MRHP_Room_SentinelBay>
+        <weight>1</weight>
+        <countRange>0~3</countRange>
+      </MRHP_Room_SentinelBay>
+      <!-- FILLERS -->
+      <!-- These now rely on pruning to become large areas -->
+      <MRHP_Room_Storage>
+        <weight>1</weight> <!-- Increased weight -->
+        <countRange>0~5</countRange> 
+      </MRHP_Room_Storage>
+      <MRHP_Room_RubbleMaintenance>
+        <weight>1</weight>
+        <countRange>0~5</countRange>
+      </MRHP_Room_RubbleMaintenance>
+      
+    </roomDefs>
+    
+    <threats>
+      <MRHP_Threat_SleepingSentinels>
+        <selectionWeight>1.0</selectionWeight>
+      </MRHP_Threat_SleepingSentinels>
+    </threats>
+  </ComplexLayoutDef>
+
+  <ComplexThreatDef ParentName="SleepingThreat">
+    <defName>MRHP_Threat_SleepingSentinels</defName>
+    <workerClass>MRHP.ComplexThreatWorker_SleepingSentinels</workerClass>
+  </ComplexThreatDef>
+</Defs>

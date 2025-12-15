@@ -1,0 +1,48 @@
+<Defs>
+  <!-- 1. JCJenson Employee (Human Scientist/Office Worker) -->
+  <PawnKindDef ParentName="MRHP_DeadPawnKind_Base">
+    <defName>MRHP_JCJenson_Human</defName>
+    <label>JCJenson employee</label>
+    <race>Human</race>
+    <combatPower>30</combatPower>
+    <!-- Force Baseliner (Human) -->
+    <xenotypeSet>
+      <xenotypeChances>
+        <Baseliner>99999</Baseliner>
+      </xenotypeChances>
+    </xenotypeSet>
+    <!-- Dress like a civilian/scientist -->
+    <apparelTags>
+      <li>IndustrialBasic</li>
+      <li>IndustrialAdvanced</li> <!-- Vests/Jackets -->
+    </apparelTags>
+    <apparelMoney>200~800</apparelMoney>
+    <apparelAllowHeadgearChance>0.2</apparelAllowHeadgearChance> <!-- Mostly no hats -->
+    <techHediffsChance>0.1</techHediffsChance>
+    <initialWillRange>0~0</initialWillRange>
+    <initialResistanceRange>0~1</initialResistanceRange>
+  </PawnKindDef>
+
+  <!-- 2. Worker Drone (The Xenotype) -->
+  <PawnKindDef MayRequire="Stonerspizzajoint.TheWorkerDrones" ParentName="MRHP_DeadPawnKind_Base">
+    <defName>MRHP_JCJenson_WorkerDrone</defName>
+    <label>worker drone</label>
+    <race>Human</race>
+    <combatPower>40</combatPower>
+    <xenotypeSet>
+      <xenotypeChances>
+        <MRWD_WorkerDroneBase>99999</MRWD_WorkerDroneBase>
+      </xenotypeChances>
+    </xenotypeSet>
+    <!-- Dress like a worker -->
+    <apparelTags>
+        <li>IndustrialBasic</li> 
+    </apparelTags>
+    <apparelRequired>
+        <li>MRWD_Headgear_Hardhat</li>
+    </apparelRequired>
+    <apparelMoney>100~400</apparelMoney>
+    <initialWillRange>0~0</initialWillRange>
+    <initialResistanceRange>0~1</initialResistanceRange>
+  </PawnKindDef>
+</Defs>

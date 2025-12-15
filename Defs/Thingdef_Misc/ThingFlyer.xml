@@ -1,0 +1,12 @@
+<Defs>
+  <!-- The object that carries the Sentinel through the air -->
+  <ThingDef ParentName="PawnFlyerBase">
+    <defName>MRHP_SentinelLeapFlyer</defName>
+    <label>leaping sentinel</label>
+    <thingClass>MRHP.SentinelPounceFlyer</thingClass>
+    <pawnFlyer>
+      <flightDurationMin>0.5</flightDurationMin>
+      <flightSpeed>18</flightSpeed> <!-- Very fast jump -->
+    </pawnFlyer>
+  </ThingDef>
+</Defs>

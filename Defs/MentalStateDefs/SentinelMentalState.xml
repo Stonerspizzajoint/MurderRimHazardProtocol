@@ -1,0 +1,14 @@
+<Defs>
+  <MentalStateDef>
+    <defName>MRHP_AndroidRage</defName>
+    <label>android eradication protocol</label>
+    <stateClass>MRHP.MentalState_AndroidRage</stateClass>
+    <category>Aggro</category>
+    <blockNormalThoughts>true</blockNormalThoughts>
+    <nameColor>(1, 0.2, 0.2)</nameColor> <!-- Bright Red -->
+    <beginLetter>{0} has detected an android ({1}) and entered a frenzy!</beginLetter>
+    <beginLetterDef>ThreatSmall</beginLetterDef>
+    <recoveryMtbDays>0.5</recoveryMtbDays> <!-- Short duration if they lose sight -->
+    <baseInspectLine>Hunting target: {0}</baseInspectLine>
+  </MentalStateDef>
+</Defs>

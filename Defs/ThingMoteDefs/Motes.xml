@@ -1,0 +1,34 @@
+<Defs>
+  <ThingDef ParentName="MoteBase">
+    <defName>MRHP_Mote_ConeFlash</defName>
+    <thingClass>MoteThrown</thingClass>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <fadeInTime>0.02</fadeInTime> <!-- Faster fade in for a flash -->
+      <solidTime>0.1</solidTime>
+      <fadeOutTime>0.3</fadeOutTime>
+    </mote>
+    <graphicData>
+      <texPath>Things/Mote/ConeFlash</texPath>
+      <graphicClass>Graphic_Mote</graphicClass>
+      <shaderType>MoteGlow</shaderType>
+      <drawSize>1.0</drawSize> 
+    </graphicData>
+  </ThingDef>
+
+  <ThingDef ParentName="MoteBase">
+    <defName>MRHP_Mote_BootLoop</defName>
+    <thingClass>MoteThrown</thingClass>
+    <graphicData>
+      <texPath>Things/Mote/BootLooped</texPath>
+      <graphicClass>Graphic_Mote</graphicClass>
+      <shaderType>MoteGlow</shaderType> <!-- Makes it bright/visible -->
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <fadeInTime>0.2</fadeInTime>
+      <solidTime>1.5</solidTime>
+      <fadeOutTime>0.5</fadeOutTime>
+    </mote>
+  </ThingDef>
+</Defs>

@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- ============================================== -->
+  <!--                 THE SCRAP-BUG                     -->
+  <!-- ============================================== -->
+
+  <ThingDef ParentName="BaseJCJensonRobot">
+    <defName>MRHP_ScrapBugRace</defName>
+    <label>Scrap-Bug</label>
+    <description>A tiny, insectoid recycling drone manufactured by JCJenson. Originally designed to autonomously locate and break down scrap metal in hazardous environments.\n\nThey are extremely fragile, designed only for light utility work. A single heavy blow is often enough to shatter their chassis.</description>
+    
+    <statBases>
+      <MoveSpeed>5.0</MoveSpeed> <!-- Fast, erratic movement -->
+      <MarketValue>150</MarketValue> <!-- Cheap mass-produced drones -->
+      
+      <!-- Stompable stats -->
+      <ArmorRating_Blunt>0.0</ArmorRating_Blunt> 
+      <ArmorRating_Sharp>0.0</ArmorRating_Sharp>
+      <MeatAmount>0</MeatAmount>
+    </statBases>
+
+    <!-- === VISUALS === -->
+    <uiIconPath>Things/Pawn/Mechanoid/Scrap_Bug/MRHP_ScrapBug_east</uiIconPath>
+    
+    <!-- === INTERACTIONS === -->
+    <race>
+      <body>MRHP_ScrapBugBody</body> <!-- Ensure this matches your BodyDef name -->
+      <thinkTreeMain>VEF_AnimalWeirdEater</thinkTreeMain>
+      <thinkTreeConstant>AnimalConstant</thinkTreeConstant>
+      <foodType>OmnivoreHuman</foodType> 
+      <!-- RAT SIZED -->
+      <baseBodySize>0.2</baseBodySize>
+      <baseHealthScale>0.25</baseHealthScale>
+      
+      <trainability>Intermediate</trainability> <!-- Too small for complex tasks -->
+      <petness>0.1</petness>
+      
+      <!-- MOVEMENT -->
+      <lifeStageAges>
+        <li>
+          <def>MechanoidFullyFormed</def>
+          <minAge>0</minAge>
+          <!-- Using smaller, higher pitched sounds if available, otherwise Scyther defaults -->
+          <soundWounded>MRHP_ScrapBug_Wounded</soundWounded>
+          <soundDeath>MRHP_ScrapBug_Death</soundDeath>
+          <soundCall>MRHP_ScrapBug_Call</soundCall>
+          <soundAngry>MRHP_ScrapBug_Angry</soundAngry>
+        </li>
+      </lifeStageAges>
+      <disableMating>false</disableMating>
+    </race>
+    
+    <!-- === COMBAT (Weakened) === -->
+    <tools>
+      <li>
+        <label>metal teeth</label>
+        <capacities>
+          <li>Bite</li>
+        </capacities>
+        <power>3</power> <!-- Very weak bite -->
+        <cooldownTime>1.8</cooldownTime>
+        <linkedBodyPartsGroup>Mouth</linkedBodyPartsGroup>
+      </li>
+      <li>
+        <label>sharp leg</label>
+        <capacities>
+          <li>Scratch</li>
+        </capacities>
+        <power>2</power> <!-- Tiny scratch -->
+        <cooldownTime>1.2</cooldownTime>
+        <linkedBodyPartsGroup>Legs</linkedBodyPartsGroup>
+      </li>
+      <li>
+        <label>head</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>1</power> <!-- Headbutt does almost nothing -->
+        <cooldownTime>2</cooldownTime>
+        <linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
+        <chanceFactor>0.1</chanceFactor>
+      </li>
+    </tools>
+    <comps>
+        <li Class="VEF.AnimalBehaviours.CompProperties_Floating" />
+        <li Class="VEF.AnimalBehaviours.CompProperties_NoFilth" />
+        <li Class="MRHP.CompProperties_ScrapEater">
+        <!-- === WHAT THEY EAT === -->
+        <customThingToEat>
+            <li>Wastepack</li>
+        </customThingToEat >
+        <prioritizeCorpses>true</prioritizeCorpses>
+        <eatThingCategories>
+           <li>Corpses</li>
+           <li>CorpsesAnimal</li>
+           <li>CorpsesInsect</li>
+           <li>CorpsesHumanlike</li>
+           <li>CorpsesMechanoid</li>
+        </eatThingCategories>
+
+        <filthConversionRules>
+        <!-- Building (Rubble/Debris -> Steel/Wood) -->
+          <li>
+            <keywords>
+              <li>Rubble</li>
+              <li>Debris</li>
+            </keywords>
+            <thingToSpawn>Steel</thingToSpawn>
+            <chance>0.05</chance> <!-- 5% Chance (Rare) -->
+          </li>
+          <li>
+            <keywords>
+              <li>Building</li>
+              <li>Debris</li>
+            </keywords>
+            <thingToSpawn>WoodLog</thingToSpawn>
+            <chance>0.05</chance> <!-- 5% Chance (Rare) -->
+          </li>
+
+        <!-- METAL (Metal -> Steel) -->
+          <li>
+            <keywords>
+              <li>Slag</li>
+              <li>Machine</li>
+            </keywords>
+            <thingToSpawn>Steel</thingToSpawn>
+            <chance>0.5</chance> <!-- 50% Chance (Rare) -->
+          </li>
+
+        <!-- MACHINE (Machine -> Plasteel) -->
+          <li>
+            <keywords>
+              <li>Machine</li>
+            </keywords>
+            <thingToSpawn>Plasteel</thingToSpawn>
+            <chance>0.1</chance> <!-- 10% Chance (Rare) -->
+          </li>
+
+        <!-- ORGANICS (Oil/Bio -> Chemfuel) -->
+          <li>
+            <keywords>
+              <li>Oil</li>
+              <li>Blood</li>
+              <li>Flesh</li>
+              <li>Slime</li>
+              <li>Hair</li>
+              <li>Vomit</li>
+              <li>Bile</li>
+              <li>Acid</li>
+              <li>Animal</li>
+              <li>Corpse</li>
+              <li>Foam</li>
+              <li>Fluid</li>
+              <li>Wood</li>
+            </keywords>
+            <thingToSpawn>Chemfuel</thingToSpawn>
+            <chance>0.2</chance> <!-- 20% Chance -->
+          </li>
+
+        <!-- NEUTROAMINE (Oil -> Neutroamine) -->
+          <li>
+            <keywords>
+              <li>Oil</li>
+              <li>Neutroamine</li>
+            </keywords>
+            <thingToSpawn>Neutroamine</thingToSpawn>
+            <chance>0.5</chance> <!-- 50% Chance -->
+          </li>
+
+        <!-- FUEL (Anything with Fuel keyword -> Chemfuel) -->
+          <li>
+            <keywords>
+              <li>Fuel</li> <!-- Fallback rule -->
+            </keywords>
+            <thingToSpawn>Chemfuel</thingToSpawn>
+            <chance>0.9</chance> <!-- 90% Chance -->
+          </li>
+        </filthConversionRules>
+
+        <filthKeywords>
+            <li>Trash</li>
+            <li>Dirt</li>
+            <li>Sand</li>
+        </filthKeywords>
+
+        <!-- === EATING MECHANICS === -->
+        <nutrition>1</nutrition> <!-- They get 1 nutrition per 'bite' -->
+        
+        <!-- Destruction Logic -->
+        <!-- We don't want them to delete a whole slag chunk in one bite. -->
+        <fullyDestroyThing>false</fullyDestroyThing> 
+        <percentageOfDestruction>0.05</percentageOfDestruction> <!-- 5 bites to finish a chunk -->
+
+        <!-- === SCAVENGING BEHAVIOR === -->
+        <!-- If the map is clean, they dig for scrap metal -->
+        <digThingIfMapEmpty>false</digThingIfMapEmpty>
+        <thingToDigIfMapEmpty>Filth_Trash</thingToDigIfMapEmpty>
+        <customAmountToDig>1</customAmountToDig>
+
+        <!-- === POWER DRAIN === -->
+        <!-- They latch onto batteries like ticks -->
+        <drainBattery>true</drainBattery>
+        <percentageDrain>0.05</percentageDrain> <!-- 5% drain per feed. Small but noticeable. -->
+        
+        <!-- === EVOLUTION (Optional) === -->
+        <!-- Do you want them to duplicate if they eat enough? -->
+        <!-- This mimics a 'swarm' growing from resources -->
+        <fissionAfterXFeedings>true</fissionAfterXFeedings>
+        <advanceAfterXFeedings>1</advanceAfterXFeedings> <!-- Eat 1 pile of trash -> Make a baby -->
+        <defToFissionTo>MRHP_ScrapBug</defToFissionTo> <!-- Duplication -->
+        <numberOfOffspring>1</numberOfOffspring>
+        <fissionOnlyIfTamed>false</fissionOnlyIfTamed> <!-- Wild swarms can grow endlessly. Scary. -->
+        
+        </li>
+    </comps>
+  </ThingDef>
+
+  <!-- ============================================== -->
+  <!--                 PAWN KINDS                     -->
+  <!-- ============================================== -->
+
+  <!-- Abstract Base for Keybugs -->
+  <PawnKindDef Name="MRHP_ScrapBugKindBase" Abstract="True">
+    <race>MRHP_ScrapBugRace</race>
+    <combatPower>20</combatPower> <!-- Extremely low threat level -->
+    <aiAvoidCover>true</aiAvoidCover>
+    <collidesWithPawns>false</collidesWithPawns> <!-- Can move through pawns -->
+    <immuneToTraps>true</immuneToTraps> <!-- Too small to trigger traps -->
+    <ignoresPainShock>true</ignoresPainShock> <!-- Feels no pain -->
+    <lifeStages>
+      <li>
+        <bodyGraphicData>
+          <texPath>Things/Pawn/Mechanoid/Scrap_Bug/MRHP_ScrapBug</texPath> 
+          <graphicClass>Graphic_Multi</graphicClass>
+          <drawSize>0.6</drawSize> <!-- Visually small -->
+          <shadowData>
+            <volume>(0.2, 0.2, 0.2)</volume>
+            <offset>(0,0,-0.1)</offset>
+          </shadowData>
+        </bodyGraphicData>
+      </li>
+    </lifeStages>
+  </PawnKindDef>
+
+  <!-- The Standard Scrap-Bug -->
+  <PawnKindDef ParentName="MRHP_ScrapBugKindBase">
+    <defName>MRHP_ScrapBug</defName>
+    <label>Scrap-Bug</label>
+    <ecoSystemWeight>0.05</ecoSystemWeight> <!-- Very light impact on ecosystem -->
+    <wildGroupSize>5~10</wildGroupSize> <!-- They spawn in swarms -->
+  </PawnKindDef>
+
+</Defs>

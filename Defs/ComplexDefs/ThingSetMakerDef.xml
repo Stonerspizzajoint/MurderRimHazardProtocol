@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <ThingSetMakerDef>
+    <defName>MRHP_LootTable_IndustrialSalvage</defName>
+    <root Class="ThingSetMaker_RandomOption">
+      <options>
+        
+        <!-- TIER 1: COMMON JUNK (High Weight) -->
+        
+        <!-- Steel (Common construction material) -->
+        <li>
+          <weight>2.0</weight>
+          <thingSetMaker Class="ThingSetMaker_StackCount">
+            <fixedParams>
+              <filter><thingDefs><li>Steel</li></thingDefs></filter>
+              <countRange>30~75</countRange>
+            </fixedParams>
+          </thingSetMaker>
+        </li>
+
+        <!-- Chemfuel (Old fuel reserves) -->
+        <li>
+          <weight>1.5</weight>
+          <thingSetMaker Class="ThingSetMaker_StackCount">
+            <fixedParams>
+              <filter><thingDefs><li>Chemfuel</li></thingDefs></filter>
+              <countRange>15~40</countRange>
+            </fixedParams>
+          </thingSetMaker>
+        </li>
+
+        <!-- Industrial Medicine -->
+        <li>
+          <weight>1.0</weight>
+          <thingSetMaker Class="ThingSetMaker_StackCount">
+            <fixedParams>
+              <filter><thingDefs><li>MedicineIndustrial</li></thingDefs></filter>
+              <countRange>2~5</countRange>
+            </fixedParams>
+          </thingSetMaker>
+        </li>
+
+        <!-- TIER 2: VALUABLE PARTS (Medium Weight) -->
+
+        <!-- Components (Always needed) -->
+        <li>
+          <weight>1.0</weight>
+          <thingSetMaker Class="ThingSetMaker_StackCount">
+            <fixedParams>
+              <filter><thingDefs><li>ComponentIndustrial</li></thingDefs></filter>
+              <countRange>2~5</countRange>
+            </fixedParams>
+          </thingSetMaker>
+        </li>
+
+        <!-- Plasteel (Rare alloy) -->
+        <li>
+          <weight>0.8</weight>
+          <thingSetMaker Class="ThingSetMaker_StackCount">
+            <fixedParams>
+              <filter><thingDefs><li>Plasteel</li></thingDefs></filter>
+              <countRange>10~25</countRange>
+            </fixedParams>
+          </thingSetMaker>
+        </li>
+
+        <!-- Uranium (Reactor fuel) -->
+        <li>
+          <weight>0.5</weight>
+          <thingSetMaker Class="ThingSetMaker_StackCount">
+            <fixedParams>
+              <filter><thingDefs><li>Uranium</li></thingDefs></filter>
+              <countRange>10~30</countRange>
+            </fixedParams>
+          </thingSetMaker>
+        </li>
+
+        <!-- TIER 3: RARE TECH (Low Weight) -->
+
+        <!-- Advanced Components -->
+        <li>
+          <weight>0.3</weight>
+          <thingSetMaker Class="ThingSetMaker_StackCount">
+            <fixedParams>
+              <filter><thingDefs><li>ComponentSpacer</li></thingDefs></filter>
+              <countRange>1~2</countRange>
+            </fixedParams>
+          </thingSetMaker>
+        </li>
+
+        <!-- Glitterworld Medicine -->
+        <li>
+          <weight>0.2</weight>
+          <thingSetMaker Class="ThingSetMaker_StackCount">
+            <fixedParams>
+              <filter><thingDefs><li>MedicineUltratech</li></thingDefs></filter>
+              <countRange>1~3</countRange>
+            </fixedParams>
+          </thingSetMaker>
+        </li>
+        
+        <!-- Techprint (Schematics) -->
+        <li>
+          <weight>0.1</weight>
+          <thingSetMaker Class="ThingSetMaker_Techprints">
+            <weightAccordingToPlayerNeeds>false</weightAccordingToPlayerNeeds>
+            <fixedParams>
+              <countRange>1</countRange>
+            </fixedParams>
+          </thingSetMaker>
+        </li>
+
+      </options>
+    </root>
+  </ThingSetMakerDef>
+
+</Defs>

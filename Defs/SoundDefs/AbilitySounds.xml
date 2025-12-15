@@ -1,0 +1,18 @@
+<Defs>
+  <SoundDef>
+    <defName>MRHP_BootLoopFlash</defName>
+    <context>MapOnly</context>
+    <maxSimultaneous>1</maxSimultaneous>
+    <subSounds>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>MRHP/Sentinel/MRHP_BootLoopFlash</clipFolderPath>
+          </li>
+        </grains>
+        <volumeRange>10</volumeRange>
+        <pitchRange>1</pitchRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+</Defs>

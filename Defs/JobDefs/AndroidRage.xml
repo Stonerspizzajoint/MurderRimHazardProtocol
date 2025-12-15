@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <JobDef>
+    <defName>MRHP_ExecuteAndroid</defName>
+    <driverClass>MRHP.JobDriver_ExecuteAndroid</driverClass>
+    <reportString>terminating TargetA.</reportString>
+    <allowOpportunisticPrefix>true</allowOpportunisticPrefix>
+    <casualInterruptible>false</casualInterruptible> <!-- Hard to distract casually -->
+  </JobDef>
+</Defs>

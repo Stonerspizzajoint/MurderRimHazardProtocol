@@ -1,0 +1,47 @@
+<Defs>
+  <VREAndroids.AndroidGeneDef ParentName="MRC_MiscHardwareNoVEF">
+    <defName>MRHP_BootLoopImmunity</defName>
+    <label>Boot-Loop Immunity</label>
+    <description>Advanced optical filters prevent visual-based overload attacks (Boot Loops) from crashing this android's systems.</description>
+    <iconPath>UI/Icons/Genes/Gene_BootLoopImmunity</iconPath> <!-- Ensure you have an icon -->
+    <biostatCpx>1</biostatCpx>
+    <biostatMet>-2</biostatMet>
+    <makeImmuneTo>
+      <li>MRHP_BootLoop</li>
+    </makeImmuneTo>
+  </VREAndroids.AndroidGeneDef>
+
+  <VREAndroids.AndroidGeneDef ParentName="MRC_MiscHardwareNoVEF">
+    <defName>MRHP_BootLoopCritical</defName>
+    <label>Boot-Loop Critical</label>
+    <description>Androids with this hardware suffer permanent boot loops when disrupted. Once triggered, the reset cycle cannot resolve on its own and leaves the unit inoperable until a pawn performs a software repair operation. Whether caused by failed optimization or deliberate design, this flaw ensures total reliance on external intervention.</description>
+    <iconPath>UI/Icons/Genes/Gene_BootLoopCritical</iconPath> <!-- Ensure you have an icon -->
+    <biostatCpx>1</biostatCpx>
+    <biostatMet>4</biostatMet>
+  </VREAndroids.AndroidGeneDef>
+
+  <VREAndroids.AndroidGeneDef ParentName="MRC_MiscHardwareNoVEF">
+    <defName>MRHP_AndroidFlash</defName>
+    <label>android flash</label>
+    <description>This android is fitted with a specialized optical discharge unit capable of projecting a sudden, blinding flash. The burst destabilizes exposed synthetic vision systems, forcing vulnerable machines into a disruptive boot loop cycle. While harmless to biological eyes and ineffective against shielded optics, it provides a decisive edge when facing unprotected android adversaries.</description>
+    <iconPath>UI/Icons/Genes/Gene_AndroidFlash</iconPath> <!-- Ensure you have an icon -->
+    <biostatCpx>1</biostatCpx>
+    <biostatMet>-4</biostatMet>
+    <abilities>
+      <li>MRHP_AndroidFlash</li>
+    </abilities>
+    <!-- NEW: Visuals for the optic part -->
+    <renderNodeProperties>
+      <li>
+        <workerClass>PawnRenderNodeWorker_Eye</workerClass>
+				<visibleFacing>
+					<li>South</li>
+					<li>West</li>
+				</visibleFacing>
+        <parentTagDef>Head</parentTagDef>
+        <texPath>Things/Pawn/Attachments/FlashLight/FlashLight</texPath>
+        <baseLayer>72</baseLayer>
+      </li>
+    </renderNodeProperties>
+  </VREAndroids.AndroidGeneDef>
+</Defs>

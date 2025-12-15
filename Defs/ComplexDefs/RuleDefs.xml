@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <RuleDef>
+    <defName>MRHP_SentinelComplex_Rule</defName>
+    <symbol>SentinelComplex</symbol>
+    <resolvers>
+      <li Class="MRHP.SymbolResolver_SentinelComplex">
+        <minRectSize>(20, 20)</minRectSize>
+      </li>
+    </resolvers>
+  </RuleDef>
+</Defs>

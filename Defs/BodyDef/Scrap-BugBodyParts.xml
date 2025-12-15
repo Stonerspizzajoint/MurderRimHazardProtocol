@@ -1,0 +1,115 @@
+<Defs>
+
+  <!-- ============================================== -->
+  <!--               ABSTRACT BASES                   -->
+  <!-- ============================================== -->
+
+  <!-- BASE 1: HARDWARE (Armor, Plating, Structural) -->
+  <!-- These parts DO NOT get frostbite. They are cold metal. -->
+  <BodyPartDef Name="MD_KeybugHardBase" Abstract="True">
+    <frostbiteVulnerability>0</frostbiteVulnerability>
+    <skinCovered>false</skinCovered>
+    <solid>true</solid>
+    <alive>false</alive>
+    <bleedRate>0.0</bleedRate>
+    <permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
+  </BodyPartDef>
+
+  <!-- BASE 2: WETWARE (Fluids, Optics, Hydraulics) -->
+  <!-- These parts CAN get frostbite. Use this to fix the error and add realism. -->
+  <BodyPartDef Name="MD_KeybugSoftBase" Abstract="True">
+    <frostbiteVulnerability>0.5</frostbiteVulnerability> <!-- Reduced vulnerability, but present -->
+    <skinCovered>false</skinCovered>
+    <solid>false</solid>
+    <alive>false</alive> <!-- Still not "alive", but mechanically complex -->
+    <permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
+  </BodyPartDef>
+
+
+  <!-- ============================================== -->
+  <!--            CONCRETE DEFINITIONS                -->
+  <!-- ============================================== -->
+
+  <!-- === IMMUNE PARTS (HardBase) === -->
+
+  <!-- 1. The Shell -->
+  <BodyPartDef ParentName="MD_KeybugHardBase">
+    <defName>MRHP_ScrapBugCarapace</defName>
+    <label>carapace</label>
+    <hitPoints>40</hitPoints>
+    <solid>false</solid> <!-- Exception: Must be false to hold organs -->
+    <tags><li>MovingLimbCore</li></tags>
+  </BodyPartDef>
+
+  <!-- 2. The Head Plating -->
+  <BodyPartDef ParentName="MD_KeybugHardBase">
+    <defName>MRHP_ScrapBugHead</defName>
+    <label>cranial plating</label>
+    <hitPoints>30</hitPoints>
+  </BodyPartDef>
+
+  <!-- 5. The Antennae -->
+  <BodyPartDef ParentName="MD_KeybugHardBase">
+    <defName>MRHP_SignalSpire</defName>
+    <label>signal spire</label>
+    <hitPoints>8</hitPoints>
+    <tags><li>HearingSource</li></tags> 
+  </BodyPartDef>
+
+  <!-- 6. The Mouth -->
+  <BodyPartDef ParentName="MD_KeybugHardBase">
+    <defName>MRHP_RecyclingMaw</defName>
+    <label>recycling maw</label>
+    <hitPoints>25</hitPoints>
+    <tags><li>EatingSource</li></tags>
+  </BodyPartDef>
+
+
+  <!-- === VULNERABLE PARTS (SoftBase) === -->
+
+  <!-- 3. The Legs (Hydraulics freeze) -->
+  <BodyPartDef ParentName="MD_KeybugSoftBase">
+    <defName>MRHP_MechanicalLeg</defName>
+    <label>mechanical leg</label>
+    <hitPoints>20</hitPoints>
+    <solid>true</solid> <!-- Legs are solid for combat calculations -->
+    <bleedRate>0.0</bleedRate> 
+    <tags><li>MovingLimbCore</li></tags>
+  </BodyPartDef>
+
+  <!-- 4. The Eyes (Lenses crack) -->
+  <BodyPartDef ParentName="MD_KeybugSoftBase">
+    <defName>MRHP_Photoreceptor</defName>
+    <label>photoreceptor</label>
+    <hitPoints>5</hitPoints>
+    <socketed>true</socketed>
+    <tags><li>SightSource</li></tags>
+    <hitChanceFactors><li><key>Blunt</key><value>0.5</value></li></hitChanceFactors>
+  </BodyPartDef>
+
+  <!-- 7. The Internals (Oil freezes) -->
+  <BodyPartDef ParentName="MD_KeybugSoftBase">
+    <defName>MRHP_CoolantPump</defName>
+    <label>coolant pump</label>
+    <hitPoints>15</hitPoints>
+    <bleedRate>1.0</bleedRate>
+    <tags><li>BloodPumpingSource</li></tags>
+  </BodyPartDef>
+
+  <BodyPartDef ParentName="MD_KeybugSoftBase">
+    <defName>MRHP_ScrapFurnace</defName>
+    <label>scrap furnace</label>
+    <hitPoints>20</hitPoints>
+    <bleedRate>0.3</bleedRate>
+    <tags><li>MetabolismSource</li></tags>
+  </BodyPartDef>
+
+  <BodyPartDef ParentName="MD_KeybugSoftBase">
+    <defName>MRHP_LogicCore</defName>
+    <label>logic core</label>
+    <hitPoints>15</hitPoints>
+    <bleedRate>0.1</bleedRate>
+    <tags><li>ConsciousnessSource</li></tags>
+  </BodyPartDef>
+
+</Defs>

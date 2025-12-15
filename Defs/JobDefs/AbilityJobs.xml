@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <JobDef>
+    <defName>MRHP_SentinelPounceJob</defName>
+    <driverClass>MRHP.JobDriver_SentinelPounce</driverClass>
+    <reportString>mauling TargetA.</reportString>
+    <allowOpportunisticPrefix>false</allowOpportunisticPrefix>
+    <casualInterruptible>false</casualInterruptible>
+  </JobDef>
+
+  <JobDef>
+    <defName>MRHP_SentinelMaul</defName>
+    <driverClass>MRHP.JobDriver_SentinelMaul</driverClass>
+    <reportString>mauling TargetA.</reportString>
+    <casualInterruptible>false</casualInterruptible>
+    <allowOpportunisticPrefix>false</allowOpportunisticPrefix>
+    <alwaysShowWeapon>true</alwaysShowWeapon>
+  </JobDef>
+</Defs>

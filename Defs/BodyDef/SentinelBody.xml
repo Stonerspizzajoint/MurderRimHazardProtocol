@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <BodyDef>
+    <defName>MRHP_SentinelBody</defName>
+    <label>sentinel chassis</label>
+    <corePart>
+      <def>MRHP_SentinelThorax</def>
+      <customLabel>chassis</customLabel>
+      <height>Middle</height>
+      <depth>Outside</depth>
+      <parts>
+        
+        <!-- HEAD & NECK -->
+        <li>
+          <def>MRHP_SentinelNeck</def>
+          <coverage>0.10</coverage>
+          <parts>
+            <li>
+              <def>MRHP_SentinelHead</def>
+              <coverage>0.80</coverage>
+              <groups>
+                <li>HeadAttackTool</li>
+              </groups>
+              <parts>
+                <li>
+                  <def>MRHP_SentinelFlashNode</def>
+                  <coverage>0.15</coverage> 
+                  <depth>Outside</depth>
+                  <groups>
+                    <li>NeuroOpticalLight</li>
+                  </groups>
+                </li>
+                <li>
+                  <def>ArtificialBrain</def>
+                  <coverage>0.10</coverage>
+                  <depth>Inside</depth>
+                </li>
+                <li>
+                  <def>SightSensor</def>
+                  <customLabel>optic array</customLabel>
+                  <coverage>0.20</coverage>
+                </li>
+                
+                <!-- NEW JAW -->
+                <li>
+                  <def>MRHP_SerratedMaw</def> <!-- REPLACED JAW -->
+                  <coverage>0.20</coverage>
+                  <groups>
+                    <li>Teeth</li> 
+                  </groups>
+                </li>
+                
+                <li>
+                  <def>SmellSensor</def>
+                  <coverage>0.10</coverage>
+                </li>
+              </parts>
+            </li>
+          </parts>
+        </li>
+        
+        <!-- ARMS (Updated to use MRHP_SentinelArm + MechanicalClaw) -->
+        <li>
+          <def>MechanicalShoulder</def>
+          <customLabel>left shoulder</customLabel>
+          <coverage>0.12</coverage>
+          <parts>
+            <li>
+              <def>MRHP_SentinelArm</def> <!-- REPLACED Limb -->
+              <customLabel>left arm</customLabel>
+              <coverage>0.75</coverage>
+              <parts>
+                <li>
+                  <def>MRHP_MechanicalClaw</def> <!-- REPLACED MechanicalHand -->
+                  <customLabel>left claw</customLabel>
+                  <coverage>0.50</coverage>
+                  <groups>
+                    <li>FrontLeftClaw</li> 
+                  </groups>
+                </li>
+              </parts>
+            </li>
+          </parts>
+        </li>
+
+        <li>
+          <def>MechanicalShoulder</def>
+          <customLabel>right shoulder</customLabel>
+          <coverage>0.12</coverage>
+          <parts>
+            <li>
+              <def>MRHP_SentinelArm</def> <!-- REPLACED Limb -->
+              <customLabel>right arm</customLabel>
+              <coverage>0.75</coverage>
+              <parts>
+                <li>
+                  <def>MRHP_MechanicalClaw</def> <!-- REPLACED MechanicalHand -->
+                  <customLabel>right claw</customLabel>
+                  <coverage>0.50</coverage>
+                  <groups>
+                    <li>FrontRightClaw</li> 
+                  </groups>
+                </li>
+              </parts>
+            </li>
+          </parts>
+        </li>
+
+        <!-- LEGS (Updated to use MRHP_SentinelLeg) -->
+        <li>
+          <def>MRHP_SentinelLeg</def> <!-- REPLACED Limb -->
+          <customLabel>left leg</customLabel>
+          <coverage>0.15</coverage>
+        </li>
+        <li>
+          <def>MRHP_SentinelLeg</def> <!-- REPLACED Limb -->
+          <customLabel>right leg</customLabel>
+          <coverage>0.15</coverage>
+        </li>
+
+        <!-- Tail & Internals -->
+        <li>
+          <def>MRHP_MechanicalTail</def>
+          <customLabel>stabilizer tail</customLabel>
+          <coverage>0.10</coverage>
+          <groups>
+            <li>TailAttackTool</li>
+          </groups>
+        </li>
+        <li>
+          <def>Reactor</def>
+          <coverage>0.05</coverage>
+          <depth>Inside</depth>
+        </li>
+
+      </parts>
+    </corePart>
+  </BodyDef>
+
+  <!-- Body Part Groups (Keep these as is) -->
+  <BodyPartGroupDef>
+    <defName>FrontLeftClaw</defName>
+    <label>left claw</label>
+  </BodyPartGroupDef>
+
+  <BodyPartGroupDef>
+    <defName>FrontRightClaw</defName>
+    <label>right claw</label>
+  </BodyPartGroupDef>
+  
+  <BodyPartGroupDef>
+    <defName>TailAttackTool</defName>
+    <label>tail blade</label>
+  </BodyPartGroupDef>
+
+  <BodyPartGroupDef>
+    <defName>NeuroOpticalLight</defName>
+    <label>neuro-optical light</label>
+  </BodyPartGroupDef>
+
+</Defs>

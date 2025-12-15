@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <JobDef>
+    <defName>MRHP_RobotSelfSeal</defName>
+    <driverClass>MRHP.JobDriver_RobotSelfSeal</driverClass>
+    <reportString>sealing leaks.</reportString>
+    <casualInterruptible>false</casualInterruptible>
+    <suspendable>false</suspendable>
+    <playerInterruptible>true</playerInterruptible>
+  </JobDef>
+</Defs>

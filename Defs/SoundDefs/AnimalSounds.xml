@@ -1,0 +1,144 @@
+<Defs>
+
+<!-- Sentinel Sounds -->
+  <SoundDef>
+    <defName>MRHP_Sentinel_Angry</defName>
+    <context>MapOnly</context>
+    <maxSimultaneous>1</maxSimultaneous>
+    <subSounds>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>MRHP/Sentinel/MRHP_Sentinel_Angry</clipFolderPath>
+          </li>
+        </grains>
+        <volumeRange>10</volumeRange>
+        <pitchRange>1</pitchRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+
+  <SoundDef>
+    <defName>MRHP_Sentinel_Call</defName>
+    <context>MapOnly</context>
+    <maxSimultaneous>1</maxSimultaneous>
+    <subSounds>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>MRHP/Sentinel/MRHP_Sentinel_Call</clipFolderPath>
+          </li>
+        </grains>
+        <volumeRange>10</volumeRange>
+        <pitchRange>1</pitchRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+
+  <SoundDef>
+    <defName>MRHP_Sentinel_Wounded</defName>
+    <context>MapOnly</context>
+    <maxSimultaneous>1</maxSimultaneous>
+    <subSounds>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>MRHP/Sentinel/MRHP_Sentinel_Wounded</clipFolderPath>
+          </li>
+        </grains>
+        <volumeRange>10</volumeRange>
+        <pitchRange>1</pitchRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+
+  <SoundDef>
+    <defName>MRHP_Sentinel_Death</defName>
+    <context>MapOnly</context>
+    <maxSimultaneous>1</maxSimultaneous>
+    <subSounds>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>MRHP/Sentinel/MRHP_Sentinel_Wounded</clipFolderPath>
+          </li>
+        </grains>
+        <volumeRange>10</volumeRange>
+        <pitchRange>0.5</pitchRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+
+<!-- Scrap-Bug Sounds -->
+
+  <SoundDef>
+    <defName>MRHP_ScrapBug_Call</defName>
+    <context>MapOnly</context>
+    <maxSimultaneous>1</maxSimultaneous>
+    <subSounds>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>MRHP/ScrapBug/MRHP_ScrapBug_Call</clipFolderPath>
+          </li>
+        </grains>
+        <volumeRange>10</volumeRange>
+        <pitchRange>0.8~0.7</pitchRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+
+  <SoundDef>
+    <defName>MRHP_ScrapBug_Angry</defName>
+    <context>MapOnly</context>
+    <maxSimultaneous>1</maxSimultaneous>
+    <subSounds>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>MRHP/ScrapBug/MRHP_ScrapBug_Call</clipFolderPath>
+          </li>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>MRHP/ScrapBug/MRHP_ScrapBug_Angry</clipFolderPath>
+          </li>
+        </grains>
+        <volumeRange>10</volumeRange>
+        <pitchRange>1~0.9</pitchRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+
+  <SoundDef>
+    <defName>MRHP_ScrapBug_Wounded</defName>
+    <context>MapOnly</context>
+    <maxSimultaneous>1</maxSimultaneous>
+    <subSounds>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>MRHP/ScrapBug/MRHP_ScrapBug_Wounded</clipFolderPath>
+          </li>
+        </grains>
+        <volumeRange>10</volumeRange>
+        <pitchRange>1~0.9</pitchRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+
+  <SoundDef>
+    <defName>MRHP_ScrapBug_Death</defName>
+    <context>MapOnly</context>
+    <maxSimultaneous>1</maxSimultaneous>
+    <subSounds>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>MRHP/ScrapBug/MRHP_ScrapBug_Wounded</clipFolderPath>
+          </li>
+        </grains>
+        <volumeRange>10</volumeRange>
+        <pitchRange>0.5</pitchRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+</Defs>

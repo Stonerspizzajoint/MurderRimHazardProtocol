@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- Base for all Sentinel Parts -->
+  <BodyPartDef Name="MRHP_SentinelPartBase" Abstract="True">
+    <frostbiteVulnerability>0</frostbiteVulnerability>
+    <skinCovered>false</skinCovered>
+    <solid>false</solid>
+    <alive>false</alive>
+    <permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
+    <bleedRate>0.6</bleedRate> 
+  </BodyPartDef>
+
+  <!-- 1. CUSTOM JAW (Can Manipulate) -->
+  <BodyPartDef ParentName="MRHP_SentinelPartBase">
+    <defName>MRHP_SerratedMaw</defName>
+    <label>serrated maw</label>
+    <hitPoints>35</hitPoints>
+    <bleedRate>0.4</bleedRate> <!-- Drooling coolant/oil -->
+    <tags>
+      <li>EatingSource</li>
+      <li>TalkingSource</li>
+      <!-- KEY ADDITION: Allows Mouth to be used for Manipulation -->
+      <li>ManipulationLimbCore</li> 
+    </tags>
+  </BodyPartDef>
+
+  <!-- 2. CUSTOM CLAW (Better Combat/Manipulation) -->
+  <BodyPartDef ParentName="MRHP_SentinelPartBase">
+    <defName>MRHP_MechanicalClaw</defName>
+    <label>mechanical claw</label>
+    <hitPoints>30</hitPoints>
+    <tags>
+      <li>ManipulationLimbSegment</li>
+    </tags>
+  </BodyPartDef>
+
+  <!-- Main Chassis (High Bleed Rate) -->
+  <BodyPartDef ParentName="MRHP_SentinelPartBase">
+    <defName>MRHP_SentinelThorax</defName>
+    <label>chassis</label>
+    <hitPoints>80</hitPoints>
+    <bleedRate>1.0</bleedRate> <!-- Core hits leak fast -->
+    <tags>
+      <li>Spine</li> <!-- Acts as spine for movement calculation -->
+    </tags>
+  </BodyPartDef>
+
+  <!-- Head -->
+  <BodyPartDef ParentName="MRHP_SentinelPartBase">
+    <defName>MRHP_SentinelHead</defName>
+    <label>sentinel head</label>
+    <hitPoints>40</hitPoints>
+    <tags>
+      <li>HearingSource</li>
+      <li>SightSource</li>
+    </tags>
+  </BodyPartDef>
+
+  <BodyPartDef>
+    <defName>MRHP_SentinelFlashNode</defName>
+    <label>optical flash node</label>
+    <hitPoints>10</hitPoints> <!-- Low HP: Breaks easily if hit directly -->
+    <permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
+    <skinCovered>false</skinCovered>
+    <solid>true</solid>
+    <alive>false</alive> <!-- Mechanical -->
+    <bleedRate>0</bleedRate>
+    <tags>
+      <li>SightSource</li> <!-- Optional: Hitting it blinds them slightly -->
+    </tags>
+  </BodyPartDef>
+
+  <!-- Neck -->
+  <BodyPartDef ParentName="MRHP_SentinelPartBase">
+    <defName>MRHP_SentinelNeck</defName>
+    <label>sentinel neck</label>
+    <hitPoints>30</hitPoints>
+    <tags>
+      <li>BreathingPathway</li> <!-- Even robots need airflow/cooling -->
+    </tags>
+  </BodyPartDef>
+
+  <!-- 3. UPDATE ARM/LEG (Needs Tags for proper stats) -->
+  <!-- Ensure your existing MRHP_SentinelLimb definition has these tags or creates a new def for arms specifically -->
+  <BodyPartDef ParentName="MRHP_SentinelPartBase">
+    <defName>MRHP_SentinelArm</defName>
+    <label>sentinel arm</label>
+    <hitPoints>40</hitPoints>
+    <tags>
+      <li>ManipulationLimbCore</li> 
+    </tags>
+  </BodyPartDef>
+
+  <BodyPartDef ParentName="MRHP_SentinelPartBase">
+    <defName>MRHP_SentinelLeg</defName>
+    <label>sentinel leg</label>
+    <hitPoints>45</hitPoints>
+    <tags>
+      <li>MovingLimbCore</li>
+    </tags>
+  </BodyPartDef>
+
+  <!-- The Tail (Updated to bleed) -->
+  <BodyPartDef ParentName="MRHP_SentinelPartBase">
+    <defName>MRHP_MechanicalTail</defName>
+    <label>mechanical tail</label>
+    <hitPoints>45</hitPoints>
+    <tags>
+      <li>MovingLimbCore</li> 
+    </tags>
+  </BodyPartDef>
+
+</Defs>

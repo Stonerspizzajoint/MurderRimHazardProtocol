@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <QuestScriptDef>
+    <defName>MRHP_Quest_SentinelBunker</defName>
+    <rootSelectionWeight>1.0</rootSelectionWeight>
+    <rootMinPoints>300</rootMinPoints>
+    <autoAccept>true</autoAccept>
+    
+    <questNameRules>
+      <rulesStrings>
+        <li>questName->The [adjective] Facility</li>
+        <li>questName->[adjective] JCJenson Cache</li>
+        <li>adjective->Forgotten</li>
+        <li>adjective->Corrupted</li>
+        <li>adjective->Dark</li>
+      </rulesStrings>
+    </questNameRules>
+    
+    <questDescriptionRules>
+      <rulesStrings>
+        <li>questDescription->We have intercepted a signal from an old JCJenson hub.\n\nStatus: [threatDescription]\n\nValuable salvage may be present.</li>
+
+        <li>threatDescription->The hub bears signs of a rushed evacuation; sentinels still patrol—deadly to worker drones and androids, their targeting arrays corrupted and increasingly hostile to humans.</li>
+        <li>threatDescription->Locked down after an unknown emergency, the facility's guardians are malfunctioning relics—relentless toward service bots and unpredictably aggressive toward intruders.</li>
+      </rulesStrings>
+    </questDescriptionRules>
+    <root Class="MRHP.QuestNode_Root_SentinelBunker" />
+  </QuestScriptDef>
+</Defs>

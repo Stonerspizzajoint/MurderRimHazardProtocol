@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <AbilityDef Name="MRHP_BootLoopFlashBase" Abstract="true">
+    <aiCanUse>true</aiCanUse>
+    <ai_IsOffensive>true</ai_IsOffensive>
+    <displayGizmoWhileUndrafted>false</displayGizmoWhileUndrafted>
+    <disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
+    <hostile>true</hostile>
+    <writeCombatLog>true</writeCombatLog>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <range>7.9</range>
+      <warmupTime>1.5</warmupTime>
+      <muzzleFlashScale>25</muzzleFlashScale>
+      <targetParams>
+        <canTargetSelf>false</canTargetSelf>
+        <canTargetPawns>true</canTargetPawns>
+        <canTargetLocations>true</canTargetLocations>
+      </targetParams>
+      <soundCast>MRHP_BootLoopFlash</soundCast> <!-- Replace with custom sound -->
+    </verbProperties>
+  </AbilityDef>
+
+  <AbilityDef ParentName="MRHP_BootLoopFlashBase">
+    <defName>MRHP_SentinelFlash</defName>
+    <label>Neuro-Optical Flash</label>
+    <description>Discharges a high-intensity cranial flash from the top of its head, overloading nearby androids and worker drones and forcing them into a boot-loop. Ineffective against biological eyes or androids with protective optics.</description>
+    <iconPath>UI/Abilities/SentinelFlash</iconPath> <!-- Create this icon -->
+    <cooldownTicksRange>600</cooldownTicksRange> <!-- 10 seconds -->
+    <verbProperties>
+      <range>10.9</range>
+      <warmupTime>1</warmupTime>
+      <muzzleFlashScale>30</muzzleFlashScale>
+      <linkedBodyPartsGroup>NeuroOpticalLight</linkedBodyPartsGroup>
+      <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+    </verbProperties>
+    <comps>
+      <li Class="MRHP.CompProperties_AbilityBootLoop">
+        <coneAngle>60</coneAngle>
+        <stunDuration>400</stunDuration> <!-- 6.5 seconds -->
+        <useSightBasedChance>true</useSightBasedChance>
+        <hediffDef>MRHP_BootLoop</hediffDef>
+        <hediffDefCritical>MRHP_BootLoopPerminent</hediffDefCritical> 
+        <moteDef>MRHP_Mote_ConeFlash</moteDef>
+        <hitMoteDef>MRHP_Mote_BootLoop</hitMoteDef>
+        <checkVerbBodyParts>true</checkVerbBodyParts>
+      </li>
+    </comps>
+  </AbilityDef>
+
+  <AbilityDef ParentName="MRHP_BootLoopFlashBase">
+    <defName>MRHP_AndroidFlash</defName>
+    <label>Neuro-Optical Flash</label>
+    <description>Discharges a high-intensity optical burst that overloads the sensors of some androids, forcing them into a hard reset (Boot Loop). Ineffective against biological eyes or androids with eye protection.</description>
+    <iconPath>UI/Abilities/SentinelFlash</iconPath> <!-- Create this icon -->
+    <cooldownTicksRange>1200</cooldownTicksRange> <!-- 20 seconds -->
+    <verbProperties>
+      <range>5.9</range>
+      <warmupTime>2</warmupTime>
+      <muzzleFlashScale>15</muzzleFlashScale>
+    </verbProperties>
+    <comps>
+      <li Class="MRHP.CompProperties_AbilityBootLoop">
+        <coneAngle>45</coneAngle>
+        <useSightBasedChance>true</useSightBasedChance>
+        <hediffDef>MRHP_BootLoop</hediffDef> 
+        <hediffDefCritical>MRHP_BootLoopPerminent</hediffDefCritical>
+        <moteDef>MRHP_Mote_ConeFlash</moteDef>
+        <hitMoteDef>MRHP_Mote_BootLoop</hitMoteDef>
+      </li>
+    </comps>
+  </AbilityDef>
+
+  <AbilityDef>
+    <defName>MRHP_SentinelPounce</defName>
+    <label>predatory pounce</label>
+    <description>The Sentinel launches itself at a target, pinning them to the ground and mauling them until they are incapacitated. Taking damage will break the pin.</description>
+    <iconPath>UI/Abilities/SentinelPounce</iconPath> <!-- Make sure this icon exists -->
+    <cooldownTicksRange>5400~18000</cooldownTicksRange> <!-- 90~300 seconds -->
+    <writeCombatLog>true</writeCombatLog>
+    <aiCanUse>true</aiCanUse>
+    <hostile>true</hostile>
+    <verbProperties>
+      <verbClass>MRHP.Verb_SentinelJump</verbClass>
+      <range>10.9</range> <!-- Long jump range -->
+      <warmupTime>0.5</warmupTime>
+      <requireLineOfSight>true</requireLineOfSight>
+      <spawnDef>MRHP_SentinelLeapFlyer</spawnDef>
+      <targetParams>
+        <canTargetPawns>true</canTargetPawns>
+        <canTargetBuildings>false</canTargetBuildings>
+        <canTargetMechs>true</canTargetMechs>
+      </targetParams>
+    </verbProperties>
+    <comps>
+      <li Class="MRHP.CompProperties_SentinelSettings">
+        <baseDodgeChance>0.05</baseDodgeChance>
+        <dodgeChancePerMeleeLevel>0.05</dodgeChancePerMeleeLevel>
+        <breakoutBaseChancePerSkill>0.02</breakoutBaseChancePerSkill>
+        <breakoutChancePerStruggle>0.01</breakoutChancePerStruggle>
+      </li>
+    </comps>
+  </AbilityDef>
+</Defs>

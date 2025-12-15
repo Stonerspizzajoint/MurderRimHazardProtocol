@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <ThinkTreeDef>
+    <defName>MRHP_SentinelBehavior</defName>
+    <thinkRoot Class="ThinkNode_Priority">
+      <subNodes>
+        
+        <!-- 1. EMERGENCY & MEDICAL -->
+        <li Class="ThinkNode_Subtree">
+          <treeDef>Downed</treeDef>
+        </li>
+        
+        <!-- ADDED: Keep lying down (Anesthesia/Surgery) -->
+        <li Class="ThinkNode_ConditionalMustKeepLyingDown">
+          <subNodes>
+            <li Class="ThinkNode_QueuedJob">
+              <inBedOnly>true</inBedOnly>
+            </li>
+            <li Class="JobGiver_KeepLyingDown" />
+          </subNodes>
+        </li>
+
+        <li Class="ThinkNode_Subtree">
+          <treeDef>BurningResponse</treeDef>
+        </li>
+
+        <li Class="ThinkNode_Subtree">
+          <treeDef>MentalStateCritical</treeDef>
+        </li>
+
+        <!-- 2. SENTINEL SPECIAL TRIGGERS -->
+        <li Class="MRHP.ThinkNode_SentinelTrigger">
+           <searchRadius>60</searchRadius>
+        </li>
+
+        <li Class="ThinkNode_ConditionalMentalState">
+          <state>MRHP_AndroidRage</state>
+          <subNodes>
+            <li Class="MRHP.JobGiver_AndroidRage" />
+          </subNodes>
+        </li>
+        
+        <!-- 3. INSTANT REACTION -->
+        <li Class="JobGiver_ReactToCloseMeleeThreat" />
+
+        <!-- 4. HOSTILE COMBAT -->
+        <li Class="ThinkNode_ConditionalOfPlayerFaction">
+          <invert>true</invert>
+          <subNodes>
+            <li Class="JobGiver_AIFightEnemies">
+              <targetAcquireRadius>65</targetAcquireRadius>
+              <chaseTarget>true</chaseTarget>
+            </li>
+          </subNodes>
+        </li>
+
+        <!-- 5. PLAYER CONTROL -->
+        <li Class="ThinkNode_QueuedJob" />
+        
+        <!-- ADDED: Forced Goto (Right-click move) -->
+        <li Class="ThinkNode_ConditionalForcedGoto">
+          <subNodes>
+            <li Class="ThinkNode_Tagger">
+              <tagToGive>Misc</tagToGive>
+              <subNodes>
+                <li Class="JobGiver_ForcedGoto" />
+              </subNodes>
+            </li>
+          </subNodes>
+        </li>
+
+        <!-- Behavior when roped -->
+        <li Class="ThinkNode_Subtree">
+          <treeDef>RopedPawn</treeDef>
+        </li>
+
+        <!-- Lord directives -->
+        <li Class="ThinkNode_Subtree">
+          <treeDef>LordDuty</treeDef>
+        </li>
+            
+        <li Class="MRHP.JobGiver_RobotSelfSeal" />
+
+        <!-- 7. TAMED BEHAVIOR -->
+        <li Class="ThinkNode_ConditionalOfPlayerFaction">
+          <subNodes>
+          
+            <!-- ADDED: Go To Bed For Repair/Heal -->
+            <li Class="ThinkNode_Tagger">
+              <tagToGive>RestingForMedicalReasons</tagToGive>
+              <subNodes>
+                <li Class="JobGiver_PatientGoToBed" />
+              </subNodes>
+            </li>
+
+            <li Class="ThinkNode_Tagger">
+              <tagToGive>TrainedAnimalBehavior</tagToGive>
+              <subNodes>
+                
+                <!-- B. COMBAT (Drafted) -->
+                <li Class="ThinkNode_ConditionalDrafted">
+                  <subNodes>
+                     <li Class="JobGiver_AIFightEnemies">
+                       <targetAcquireRadius>65</targetAcquireRadius>
+                       <chaseTarget>true</chaseTarget>
+                     </li>
+                  </subNodes>
+                </li>
+
+                <!-- C. OBEDIENCE -->
+                <li Class="ThinkNode_ConditionalTrainableCompleted">
+                  <trainable>Obedience</trainable>
+                  <subNodes>
+                    <li Class="ThinkNode_ConditionalShouldFollowMaster" >
+                      <subNodes>
+                        <li Class="JobGiver_AIDefendMaster">
+                          <attackMeleeThreatEvenIfNotHostile>true</attackMeleeThreatEvenIfNotHostile>
+                        </li>
+                        <li Class="JobGiver_AIFollowMaster"/>
+                        <li Class="JobGiver_WanderNearMaster" />
+                      </subNodes>
+                    </li>
+                  </subNodes>
+                </li>
+
+                <!-- D. RESCUE -->
+                <li Class="ThinkNode_ConditionalTrainableCompleted">
+                  <trainable>Rescue</trainable>
+                  <subNodes>
+                    <li Class="JobGiver_RescueNearby">
+                      <radius>75</radius>
+                    </li>
+                  </subNodes>
+                </li>
+
+                <!-- E. HAUL -->
+                <li Class="ThinkNode_ChancePerHour_Constant">
+                  <mtbHours>1.5</mtbHours>
+                  <subNodes>
+                    <li Class="ThinkNode_ConditionalRequireCapacities">
+                      <requiredCapacities>
+                        <li>Manipulation</li>
+                      </requiredCapacities>
+                      <subNodes>
+                        <li Class="ThinkNode_ConditionalTrainableCompleted">
+                          <trainable>Haul</trainable>
+                          <subNodes>
+                            <li Class="JobGiver_Haul" />
+                          </subNodes>
+                        </li>
+                      </subNodes>
+                    </li>
+                  </subNodes>
+                </li>
+              </subNodes>
+            </li>
+
+            <!-- F. NUZZLE -->
+            <li Class="ThinkNode_ChancePerHour_Nuzzle">
+              <subNodes>
+                <li Class="ThinkNode_Tagger">
+                  <tagToGive>Misc</tagToGive>
+                  <subNodes>
+                    <li Class="JobGiver_Nuzzle" />
+                  </subNodes>
+                </li>
+              </subNodes>
+            </li>
+            
+            <!-- ADDED: Satisfy Needs (Eat/Sleep/Recharge) -->
+            <li Class="ThinkNode_Subtree">
+              <treeDef>SatisfyBasicNeeds</treeDef>
+            </li>
+
+            <!-- ADDED: Respect Zones -->
+            <li Class="JobGiver_SeekAllowedArea" />
+            <li Class="JobGiver_SeekSafeTemperature" />
+
+            <li Class="ThinkNode_Tagger">
+              <tagToGive>Idle</tagToGive>
+              <subNodes>
+                <li Class="JobGiver_WanderColony">
+                  <maxDanger>None</maxDanger>
+                  <ticksBetweenWandersRange>120~240</ticksBetweenWandersRange>
+                </li>
+              </subNodes>
+            </li>
+          </subNodes>
+        </li>
+        
+        <!-- 8. WILD BEHAVIOR -->
+        <li Class="ThinkNode_ConditionalHasFaction">
+          <invert>true</invert>
+          <subNodes>
+            <li Class="ThinkNode_Subtree">
+               <treeDef>SatisfyBasicNeeds</treeDef>
+            </li>
+            
+            <li Class="ThinkNode_ChancePerHour_Constant">
+              <mtbDays>60</mtbDays>
+              <subNodes>
+                <li Class="JobGiver_ExitMapRandom">
+                  <defaultLocomotion>Walk</defaultLocomotion>
+                </li>
+              </subNodes>
+            </li>
+
+            <li Class="ThinkNode_Tagger">
+              <tagToGive>Idle</tagToGive>
+              <subNodes>
+                <li Class="JobGiver_WanderAnywhere">
+                  <maxDanger>Deadly</maxDanger>
+                  <ticksBetweenWandersRange>120~240</ticksBetweenWandersRange>    
+                </li>
+              </subNodes>
+            </li>
+          </subNodes>
+        </li>
+
+        <!-- 9. FALLBACK -->
+        <li Class="JobGiver_IdleError"/>
+        
+      </subNodes>
+    </thinkRoot>
+  </ThinkTreeDef>
+
+</Defs>

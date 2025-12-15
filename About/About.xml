@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <name>MurderRim – Hazard Protocols</name>
+  <shortName>Hazard Protocols</shortName>
+  <author>Stonerspizzajoint</author>
+  <supportedVersions>
+    <li>1.6</li>
+  </supportedVersions>
+  <modIconPath>UI/Icons/ModMeta/SentinelIcon</modIconPath>
+  <modDependencies>
+    <li>			
+      <packageId>Stonerspizzajoint.MurderRimCore</packageId>
+		  <displayName>MurderRim Core</displayName>
+      <steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=3615768787</steamWorkshopUrl>
+    </li>
+  </modDependencies>
+	<loadBefore>
+	</loadBefore>
+	<loadAfter>
+		<li>Stonerspizzajoint.MurderRimCore</li>
+	</loadAfter>
+  <packageId>Stonerspizzajoint.HazardProtocol</packageId>
+  <description>
+This Mod Simply adds, Sentinals and the Clean-Up Bugs as seen in the show MurderDrones.
+ 
+im still pretty new to modding, so If there are any issues or questions, feel free to let me know.
+Anyways, Thank you! :D
+
+Credit:
+Thanks to Liam Vickers and Glitch Productions for their design and concept.
+</description>
+</ModMetaData>

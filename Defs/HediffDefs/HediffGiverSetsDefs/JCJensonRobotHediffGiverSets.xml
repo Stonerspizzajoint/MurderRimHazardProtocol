@@ -1,0 +1,19 @@
+<Defs>
+  <HediffGiverSetDef>
+    <defName>MRHP_JCJensonRobotStandard</defName>
+    <hediffGivers>
+      
+      <!-- Environmental -->
+      <li Class="HediffGiver_Bleeding">
+        <hediff>VREA_NeutroLoss</hediff>
+      </li>
+      <li Class="HediffGiver_Hypothermia">
+        <hediff>MRC_Freezing</hediff>
+      </li>
+      <li Class="HediffGiver_Heat">
+        <hediff>MRC_Overheating</hediff>
+      </li>
+      <li Class="HediffGiver_Terrain" />
+    </hediffGivers>
+  </HediffGiverSetDef>
+</Defs>

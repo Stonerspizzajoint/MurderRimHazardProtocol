@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <LayoutRoomDef Name="MRHP_LabRoom_Base" Abstract="True">
+    <roofDef>RoofConstructed</roofDef>
+    <scatter>
+      <Filth_OilSmear>
+        <groupsPerHundredCells>4</groupsPerHundredCells>
+      </Filth_OilSmear>
+    </scatter>
+  </LayoutRoomDef>
+
+  <!-- ========================================================= -->
+  <!--                     NEW ROOMS                             -->
+  <!-- ========================================================= -->
+
+  <!-- NEW: CORPORATE BULLPEN -->
+  <LayoutRoomDef parentName="MRHP_LabRoom_Base">
+    <defName>MRHP_Room_CorporateBullpen</defName>
+    <minSingleRectWidth>11</minSingleRectWidth>
+    <minSingleRectHeight>11</minSingleRectHeight>
+    <requiresSingleRectRoom>true</requiresSingleRectRoom>
+    <minConnectedRooms>1</minConnectedRooms>
+    <roomContentsWorkerType>MRHP.RoomContentsWorker_LabGeneral</roomContentsWorkerType>
+    <prefabs>
+      <MRHP_AncientCubicles1>
+        <countPerHundredCells>1</countPerHundredCells>
+        <minMaxRange>1~2</minMaxRange>
+      </MRHP_AncientCubicles1>
+      <MRHP_AncientCubicles2>
+        <countPerHundredCells>1</countPerHundredCells>
+        <minMaxRange>1~2</minMaxRange>
+      </MRHP_AncientCubicles2>
+      <MRHP_VendingMachine_Edge>
+        <countPerHundredCells>1</countPerHundredCells>
+        <minMaxRange>1~1</minMaxRange>
+      </MRHP_VendingMachine_Edge>
+      
+      <!-- REDUCED LAMP DENSITY -->
+      <AncientLamp_Single>
+        <countPerHundredCells>1.5</countPerHundredCells> <!-- Reduced from 5 -->
+      </AncientLamp_Single>
+    </prefabs>
+    <floorTypes><li>AncientTile</li></floorTypes>
+    <scatter>
+      <Filth_Trash>
+        <groupsPerHundredCells>5</groupsPerHundredCells>
+      </Filth_Trash>
+      <Filth_ScatteredDocuments>
+        <groupsPerHundredCells>3</groupsPerHundredCells>
+      </Filth_ScatteredDocuments>
+    </scatter>
+  </LayoutRoomDef>
+
+  <!-- 1. ADMINISTRATION OFFICE -->
+  <LayoutRoomDef parentName="MRHP_LabRoom_Base">
+    <defName>MRHP_Room_AdminOffice</defName>
+    <minSingleRectWidth>6</minSingleRectWidth>
+    <minSingleRectHeight>7</minSingleRectHeight> 
+    <requiresSingleRectRoom>true</requiresSingleRectRoom>
+    <minConnectedRooms>1</minConnectedRooms>
+    <roomContentsWorkerType>MRHP.RoomContentsWorker_LabGeneral</roomContentsWorkerType>
+    <prefabs>
+      <MRHP_OfficeDesk_Edge>
+        <countPerHundredCells>2</countPerHundredCells>
+        <minMaxRange>1~2</minMaxRange>
+      </MRHP_OfficeDesk_Edge>
+      <MRHP_ATM_Edge>
+        <countPerHundredCells>1</countPerHundredCells>
+        <minMaxRange>0~1</minMaxRange>
+      </MRHP_ATM_Edge>
+      <MRHP_VendingMachine_Edge>
+        <countPerHundredCells>1</countPerHundredCells>
+        <minMaxRange>0~1</minMaxRange>
+      </MRHP_VendingMachine_Edge>
+      
+      <!-- REDUCED LAMP DENSITY -->
+      <AncientLamp_Single>
+        <countPerHundredCells>1.5</countPerHundredCells> <!-- Reduced from 4 -->
+      </AncientLamp_Single>
+    </prefabs>
+    <scatter>
+      <Filth_ScatteredDocuments>
+        <groupsPerHundredCells>3</groupsPerHundredCells>
+      </Filth_ScatteredDocuments>
+    </scatter>
+    <floorTypes><li>AncientTile</li></floorTypes>
+  </LayoutRoomDef>
+
+  <!-- 2. SECURITY CHECKPOINT -->
+  <LayoutRoomDef parentName="MRHP_LabRoom_Base">
+    <defName>MRHP_Room_SecurityCheckpoint</defName>
+    <minSingleRectWidth>5</minSingleRectWidth>
+    <minSingleRectHeight>5</minSingleRectHeight>
+    <minConnectedRooms>2</minConnectedRooms> 
+    <canMergeWithAdjacentRoom>true</canMergeWithAdjacentRoom>
+    <roomContentsWorkerType>MRHP.RoomContentsWorker_LabGeneral</roomContentsWorkerType>
+    <prefabs>
+      <MRHP_AncientCubicle1_Single>
+        <countPerHundredCells>1</countPerHundredCells>
+        <minMaxRange>1~1</minMaxRange>
+      </MRHP_AncientCubicle1_Single>
+      <MRHP_ATM_Edge>
+        <countPerHundredCells>1</countPerHundredCells>
+        <minMaxRange>0~1</minMaxRange>
+      </MRHP_ATM_Edge>
+      <AncientStandardRecharger>
+        <countPerHundredCells>2</countPerHundredCells>
+        <minMaxRange>1~2</minMaxRange>
+      </AncientStandardRecharger>
+      <AncientLockerBank_Row>
+        <countPerHundredCells>2</countPerHundredCells>
+      </AncientLockerBank_Row>
+      <!-- Add a lamp here (was missing), but keep it low -->
+      <AncientLamp_Single>
+        <countPerHundredCells>1.5</countPerHundredCells>
+      </AncientLamp_Single>
+    </prefabs>
+    <scatter>
+      <Filth_ScatteredDocuments>
+        <groupsPerHundredCells>3</groupsPerHundredCells>
+      </Filth_ScatteredDocuments>
+      <Filth_MoldyUniform>
+        <groupsPerHundredCells>2</groupsPerHundredCells>
+      </Filth_MoldyUniform>
+    </scatter>
+    <floorTypes><li>AncientConcrete</li></floorTypes>
+  </LayoutRoomDef>
+
+  <!-- 3. STAFF BREAK ROOM -->
+  <LayoutRoomDef parentName="MRHP_LabRoom_Base">
+    <defName>MRHP_Room_BreakArea</defName>
+    <minSingleRectWidth>6</minSingleRectWidth>
+    <minSingleRectHeight>6</minSingleRectHeight>
+    <minConnectedRooms>1</minConnectedRooms>
+    <edgeTerrain>AncientTile</edgeTerrain>
+    <roomContentsWorkerType>MRHP.RoomContentsWorker_LabGeneral</roomContentsWorkerType>
+    <prefabs>
+      <MRHP_AncientBed_Edge>
+        <countPerHundredCells>1</countPerHundredCells>
+        <minMaxRange>1~1</minMaxRange>
+      </MRHP_AncientBed_Edge>
+      <MRHP_BreakArea_Edge>
+        <countPerHundredCells>3</countPerHundredCells>
+        <minMaxRange>1~1</minMaxRange>
+      </MRHP_BreakArea_Edge>
+      <MRHP_VendingMachine_Edge>
+        <countPerHundredCells>2</countPerHundredCells>
+        <minMaxRange>1~2</minMaxRange>
+      </MRHP_VendingMachine_Edge>
+      
+      <!-- REDUCED LAMP DENSITY -->
+      <AncientLamp_Single>
+        <countPerHundredCells>1</countPerHundredCells> <!-- Reduced from 2 -->
+      </AncientLamp_Single>
+    </prefabs>
+    <floorTypes><li>AncientConcrete</li></floorTypes>
+    <scatter>
+      <Filth_Trash>
+        <groupsPerHundredCells>4</groupsPerHundredCells>
+      </Filth_Trash>
+      <Filth_MoldyUniform>
+        <groupsPerHundredCells>2</groupsPerHundredCells>
+      </Filth_MoldyUniform>
+    </scatter>
+  </LayoutRoomDef>
+
+  <!-- 4. RESTROOM -->
+  <LayoutRoomDef parentName="MRHP_LabRoom_Base">
+    <defName>MRHP_Room_Restroom</defName>
+    <minSingleRectWidth>7</minSingleRectWidth>
+    <minSingleRectHeight>5</minSingleRectHeight>
+    <areaSizeRange>20~45</areaSizeRange>
+    <requiresSingleRectRoom>true</requiresSingleRectRoom>
+    <canMergeWithAdjacentRoom>false</canMergeWithAdjacentRoom>
+    <minConnectedRooms>1</minConnectedRooms>
+    <roomContentsWorkerType>MRHP.RoomContentsWorker_LabGeneral</roomContentsWorkerType>
+    <prefabs>
+      <MRHP_Toilet3Stalls_Edge>
+        <countPerHundredCells>2</countPerHundredCells>
+        <minMaxRange>0~1</minMaxRange>
+      </MRHP_Toilet3Stalls_Edge>
+      <MRHP_Toilet2Stalls_Edge>
+        <countPerHundredCells>4</countPerHundredCells>
+        <minMaxRange>0~1</minMaxRange>
+      </MRHP_Toilet2Stalls_Edge>
+      <MRHP_ToiletStall_Edge>
+        <countPerHundredCells>15</countPerHundredCells> 
+        <minMaxRange>1~3</minMaxRange>
+      </MRHP_ToiletStall_Edge>
+      <MRHP_KitchenSink3_Edge>
+         <countPerHundredCells>3</countPerHundredCells>
+         <minMaxRange>0~1</minMaxRange>
+      </MRHP_KitchenSink3_Edge>
+      <MRHP_KitchenSink2_Edge>
+         <countPerHundredCells>10</countPerHundredCells>
+         <minMaxRange>1~2</minMaxRange>
+      </MRHP_KitchenSink2_Edge>
+      
+      <!-- REDUCED LAMP DENSITY -->
+      <AncientLamp_Single>
+        <countPerHundredCells>1.5</countPerHundredCells> <!-- Reduced from 5 -->
+      </AncientLamp_Single>
+    </prefabs>
+    <floorTypes><li>SterileTile</li></floorTypes>
+  </LayoutRoomDef>
+
+  <!-- FILLER ROOM -->
+  <LayoutRoomDef parentName="MRHP_LabRoom_Base">
+    <defName>MRHP_Room_RubbleMaintenance</defName>
+    <minSingleRectWidth>5</minSingleRectWidth>
+    <minSingleRectHeight>5</minSingleRectHeight>
+    <canMergeWithAdjacentRoom>true</canMergeWithAdjacentRoom>
+    <roomContentsWorkerType>MRHP.RoomContentsWorker_LabGeneral</roomContentsWorkerType>
+    <prefabs>
+      <AncientBarrel_Cluster>
+        <countPerHundredCells>0.5</countPerHundredCells>
+        <minMaxRange>0~1</minMaxRange>
+      </AncientBarrel_Cluster>
+      <MRHP_AncientCrate_Cluster>
+         <countPerHundredCells>0.5</countPerHundredCells>
+         <minMaxRange>0~1</minMaxRange>
+      </MRHP_AncientCrate_Cluster>
+      
+      <!-- REDUCED LAMP DENSITY -->
+      <AncientLamp_Single>
+        <countPerHundredCells>0.8</countPerHundredCells> <!-- Reduced from 2. Keep rubble darker. -->
+      </AncientLamp_Single>
+    </prefabs>
+    <floorTypes><li>AncientConcrete</li></floorTypes>
+    <scatter>
+      <ChunkSlagSteel>
+        <groupsPerHundredCells>3</groupsPerHundredCells>
+        <itemsPerGroup>1~3</itemsPerGroup>
+      </ChunkSlagSteel>
+      <Filth_RubbleRock>
+        <groupsPerHundredCells>5</groupsPerHundredCells>
+      </Filth_RubbleRock>
+    </scatter>
+  </LayoutRoomDef>
+
+  <!-- ========================================================= -->
+  <!--                  EXISTING ROOMS                           -->
+  <!-- ========================================================= -->
+
+  <LayoutRoomDef parentName="MRHP_LabRoom_Base">
+    <defName>MRHP_Room_DissectionLab</defName>
+    <minSingleRectWidth>6</minSingleRectWidth>
+    <minSingleRectHeight>6</minSingleRectHeight>
+    <requiresSingleRectRoom>true</requiresSingleRectRoom>
+    <minConnectedRooms>1</minConnectedRooms>
+    <roomContentsWorkerType>MRHP.RoomContentsWorker_LabGeneral</roomContentsWorkerType>
+    <prefabs>
+      <OperatingTables>
+        <countPerHundredCells>2</countPerHundredCells>
+        <minMaxRange>1~2</minMaxRange>
+      </OperatingTables>
+      <MRHP_AncientCubicle1_Single>
+        <countPerHundredCells>1</countPerHundredCells>
+        <minMaxRange>0~1</minMaxRange>
+      </MRHP_AncientCubicle1_Single>
+      <MRHP_AncientLargeCrate_Cluster>
+        <countPerHundredCells>0.5</countPerHundredCells>
+        <minMaxRange>0~1</minMaxRange>
+      </MRHP_AncientLargeCrate_Cluster>
+      <AncientLockerBank_Row>
+        <countPerHundredCells>1</countPerHundredCells>
+        <minMaxRange>1~2</minMaxRange>
+      </AncientLockerBank_Row>
+      
+      <!-- REDUCED LAMP DENSITY -->
+      <AncientLamp_Single>
+        <countPerHundredCells>1.5</countPerHundredCells> <!-- Reduced from 3 -->
+      </AncientLamp_Single>
+    </prefabs>
+    <floorTypes><li>AncientTile</li></floorTypes>
+  </LayoutRoomDef>
+
+  <LayoutRoomDef parentName="MRHP_LabRoom_Base">
+    <defName>MRHP_Room_ServerArchive</defName>
+    <canMergeWithAdjacentRoom>true</canMergeWithAdjacentRoom>
+    <minConnectedRooms>1</minConnectedRooms>
+    <roomContentsWorkerType>MRHP.RoomContentsWorker_LabGeneral</roomContentsWorkerType>
+    <prefabs>
+      <AncientSystemRacks_Rows>
+        <countPerHundredCells>3</countPerHundredCells>
+        <minMaxRange>1~3</minMaxRange>
+      </AncientSystemRacks_Rows>
+      <MRHP_AncientCubicle1_Single>
+        <countPerHundredCells>1</countPerHundredCells>
+        <minMaxRange>0~1</minMaxRange>
+      </MRHP_AncientCubicle1_Single>
+      <AncientDisplayBank_Edge>
+        <countPerHundredCells>2</countPerHundredCells>
+        <minMaxRange>1~2</minMaxRange>
+      </AncientDisplayBank_Edge>
+      
+      <!-- REDUCED LAMP DENSITY -->
+      <AncientLamp_Single>
+        <countPerHundredCells>1.5</countPerHundredCells> <!-- Reduced from 4 -->
+      </AncientLamp_Single>
+    </prefabs>
+    <floorTypes><li>AncientTile</li></floorTypes>
+  </LayoutRoomDef>
+
+  <LayoutRoomDef parentName="MRHP_LabRoom_Base">
+    <defName>MRHP_Room_SentinelBay</defName>
+    <canMergeWithAdjacentRoom>true</canMergeWithAdjacentRoom>
+    <minSingleRectWidth>5</minSingleRectWidth>
+    <minSingleRectHeight>5</minSingleRectHeight>
+    <minConnectedRooms>1</minConnectedRooms>
+    <roomContentsWorkerType>MRHP.RoomContentsWorker_LabGeneral</roomContentsWorkerType>
+    <prefabs>
+      <AncientStandardRecharger>
+        <countPerHundredCells>1</countPerHundredCells>
+        <minMaxRange>1~3</minMaxRange>
+      </AncientStandardRecharger>
+      <MRHP_AncientCrate_Cluster>
+        <countPerHundredCells>0.5</countPerHundredCells>
+        <minMaxRange>0~1</minMaxRange>
+      </MRHP_AncientCrate_Cluster>
+      
+      <!-- REDUCED LAMP DENSITY -->
+      <AncientLamp_Single>
+        <countPerHundredCells>1.5</countPerHundredCells> <!-- Reduced from 4 -->
+      </AncientLamp_Single>
+    </prefabs>
+    <floorTypes><li>AncientTile</li></floorTypes>
+    <scatter>
+      <ChunkMechanoidSlag>
+        <groupsPerHundredCells>1~2</groupsPerHundredCells>
+      </ChunkMechanoidSlag>
+    </scatter>
+  </LayoutRoomDef>
+
+  <LayoutRoomDef parentName="MRHP_LabRoom_Base">
+    <defName>MRHP_Room_ContainmentWard</defName>
+    <requiresSingleRectRoom>true</requiresSingleRectRoom>
+    <canMergeWithAdjacentRoom>false</canMergeWithAdjacentRoom>
+    <minConnectedRooms>1</minConnectedRooms>
+    <roomContentsWorkerType>MRHP.RoomContentsWorker_LabGeneral</roomContentsWorkerType>
+    <prefabs>
+      <AncientLargeMechGestator>
+        <countPerHundredCells>1</countPerHundredCells>
+        <minMaxRange>1~1</minMaxRange>
+      </AncientLargeMechGestator>
+      <AncientStorageCylinder_Edge>
+         <countPerHundredCells>2</countPerHundredCells>
+         <minMaxRange>1~3</minMaxRange>
+      </AncientStorageCylinder_Edge>
+      <MRHP_AncientLargeCrate_Cluster>
+        <countPerHundredCells>0.5</countPerHundredCells>
+        <minMaxRange>0~1</minMaxRange>
+      </MRHP_AncientLargeCrate_Cluster>
+      <!-- No lamps originally, keeping it that way (dark containment) -->
+    </prefabs>
+    <floorTypes><li>AncientConcrete</li></floorTypes>
+    <scatter>
+      <ChunkMechanoidSlag>
+        <groupsPerHundredCells>2</groupsPerHundredCells>
+      </ChunkMechanoidSlag>
+    </scatter>
+  </LayoutRoomDef>
+
+  <!-- STORAGE -->
+  <LayoutRoomDef parentName="MRHP_LabRoom_Base">
+    <defName>MRHP_Room_Storage</defName>
+    <canMergeWithAdjacentRoom>true</canMergeWithAdjacentRoom>
+    <minConnectedRooms>1</minConnectedRooms>
+    <roomContentsWorkerType>MRHP.RoomContentsWorker_LabGeneral</roomContentsWorkerType>
+    <prefabs>
+      <MRHP_AncientCrate_Cluster>
+        <countPerHundredCells>2</countPerHundredCells> 
+      </MRHP_AncientCrate_Cluster>
+      
+      <!-- REDUCED LAMP DENSITY -->
+      <AncientLamp_Single>
+        <countPerHundredCells>1.5</countPerHundredCells> <!-- Reduced from 4 -->
+      </AncientLamp_Single>
+    </prefabs>
+    <floorTypes><li>AncientConcrete</li></floorTypes>
+  </LayoutRoomDef>
+  
+  <!-- LOOT VAULT -->
+  <LayoutRoomDef parentName="MRHP_LabRoom_Base">
+    <defName>MRHP_Room_LootVault</defName>
+    <minSingleRectWidth>5</minSingleRectWidth>
+    <minSingleRectHeight>5</minSingleRectHeight>
+    <spawnJunk>false</spawnJunk>
+    <requiresSingleRectRoom>true</requiresSingleRectRoom>
+    <canMergeWithAdjacentRoom>false</canMergeWithAdjacentRoom>
+    <minConnectedRooms>1</minConnectedRooms>
+    <thingSetMakerDef>MRHP_LootTable_IndustrialSalvage</thingSetMakerDef>
+    <roomContentsWorkerType>MRHP.RoomContentsWorker_LabGeneral</roomContentsWorkerType>
+    <prefabs>
+      <MRHP_AncientCrate_Cluster>
+        <countPerHundredCells>2</countPerHundredCells>
+        <minMaxRange>1~3</minMaxRange>
+      </MRHP_AncientCrate_Cluster>
+      <MRHP_AncientLargeCrate_Cluster>
+        <countPerHundredCells>1.5</countPerHundredCells>
+      </MRHP_AncientLargeCrate_Cluster>
+      
+      <!-- REDUCED LAMP DENSITY -->
+      <AncientLamp_Single>
+        <countPerHundredCells>1.5</countPerHundredCells> <!-- Reduced from 4 -->
+      </AncientLamp_Single>
+    </prefabs>
+    <floorTypes><li>AncientTile</li></floorTypes>
+  </LayoutRoomDef>
+
+</Defs>

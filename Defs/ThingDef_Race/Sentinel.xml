@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <ThingDef ParentName="BaseJCJensonRobot">
+    <defName>MRHP_SentinelRace</defName>
+    <label>sentinel</label>
+    <description>A highly advanced, raptor-like security drone. Designed for rapid pursuit and crowd control, its primary weapon is a neuro-optical flash projector capable of rebooting worker drones instantly.\n\nIts sleek chassis is built for speed rather than durability, making it an excellent scout but vulnerable to sustained heavy fire.</description>
+    <statBases>
+      <MoveSpeed>6.5</MoveSpeed> <!-- Fast! Faster than a human (4.6) -->
+      <ArmorRating_Blunt>0.20</ArmorRating_Blunt>
+      <ArmorRating_Sharp>0.35</ArmorRating_Sharp>
+      <EMPResistance>0.5</EMPResistance> <!-- Partial resistance to EMP -->
+    </statBases>
+    <!-- NEW: Butcher Products -->
+    <butcherProducts>
+      <Steel>40</Steel>
+      <Plasteel>15</Plasteel>
+      <ComponentIndustrial>2</ComponentIndustrial>
+    </butcherProducts>
+    <race>
+      <body>MRHP_SentinelBody</body> <!-- We need to define this body -->
+      <hasGenders>true</hasGenders>
+      <baseBodySize>1.3</baseBodySize>
+      <baseHealthScale>1.5</baseHealthScale>
+      <trainability>Advanced</trainability> <!-- Required for Haul/Obedience logic to work -->
+      <manhunterOnDamageChance>0.5</manhunterOnDamageChance> <!-- 50% chance to attack if hurt -->
+      <manhunterOnTameFailChance>0.2</manhunterOnTameFailChance> <!-- 20% chance to attack if taming fails -->
+      <thinkTreeMain>MRHP_SentinelBehavior</thinkTreeMain>
+      <thinkTreeConstant>AnimalConstant</thinkTreeConstant>
+      <petness>0.8</petness>
+      <lifeStageAges>
+        <li>
+          <def>MechanoidFullyFormed</def>
+          <minAge>0</minAge>
+          <soundWounded>MRHP_Sentinel_Wounded</soundWounded> <!-- Placeholders until you add yours -->
+          <soundAngry>MRHP_Sentinel_Angry</soundAngry>
+          <soundDeath>MRHP_Sentinel_Death</soundDeath>
+          <soundCall>MRHP_Sentinel_Call</soundCall>
+        </li>
+      </lifeStageAges>
+    </race>
+    <tools>
+      <!-- Head Butt -->
+      <li>
+        <label>head</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>12</power>
+        <cooldownTime>2.0</cooldownTime>
+        <linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
+        <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+      </li>
+
+      <!-- NEW: Razor Fangs -->
+      <li>
+        <label>razor fangs</label>
+        <capacities>
+          <li>Bite</li>
+        </capacities>
+        <power>16</power> <!-- Strong bite -->
+        <cooldownTime>2.0</cooldownTime>
+        <linkedBodyPartsGroup>Teeth</linkedBodyPartsGroup> <!-- Must match the BodyDef group -->
+        <chanceFactor>0.6</chanceFactor> <!-- 60% chance to bite vs claw/tail -->
+        <soundMeleeHit>Pawn_Melee_MechanoidSlash_HitPawn</soundMeleeHit>
+        <soundMeleeMiss>Pawn_Melee_MechanoidSlash_Miss</soundMeleeMiss>
+      </li>
+
+      <!-- NEW: Left Claw -->
+      <li>
+        <label>left claw</label>
+        <capacities>
+          <li>Scratch</li>
+          <li>Cut</li> <!-- Can cause bleeding -->
+        </capacities>
+        <power>14</power>
+        <cooldownTime>1.5</cooldownTime> <!-- Fast attack -->
+        <linkedBodyPartsGroup>FrontLeftClaw</linkedBodyPartsGroup>
+        <surpriseAttack>
+          <extraMeleeDamages>
+            <li>
+              <def>Stun</def>
+              <amount>14</amount>
+            </li>
+          </extraMeleeDamages>
+        </surpriseAttack>
+      </li>
+
+      <!-- NEW: Right Claw -->
+      <li>
+        <label>right claw</label>
+        <capacities>
+          <li>Scratch</li>
+          <li>Cut</li>
+        </capacities>
+        <power>14</power>
+        <cooldownTime>1.5</cooldownTime>
+        <linkedBodyPartsGroup>FrontRightClaw</linkedBodyPartsGroup>
+        <surpriseAttack>
+          <extraMeleeDamages>
+            <li>
+              <def>Stun</def>
+              <amount>14</amount>
+            </li>
+          </extraMeleeDamages>
+        </surpriseAttack>
+      </li>
+
+      <!-- Tail Whip -->
+      <li>
+        <label>tail</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>18</power>
+        <cooldownTime>2.5</cooldownTime>
+        <linkedBodyPartsGroup>TailAttackTool</linkedBodyPartsGroup>
+        <chanceFactor>0.5</chanceFactor> <!-- Uses claws more often than tail -->
+      </li>
+    </tools>
+    <comps>
+      <li Class="VEF.AnimalBehaviours.CompProperties_DoesntFlee" />
+    </comps>
+  </ThingDef>
+
+  <PawnKindDef ParentName="BaseJCJensonRobotKind" Name="SentinelBase" Abstract="True">
+    <race>MRHP_SentinelRace</race>
+    <combatPower>150</combatPower>
+    <wildGroupSize>2~5</wildGroupSize>
+    <ecoSystemWeight>0.1</ecoSystemWeight>
+    <abilities>
+      <li>MRHP_SentinelFlash</li>
+      <li>MRHP_SentinelPounce</li>
+    </abilities>
+  </PawnKindDef>
+
+  <PawnKindDef ParentName="SentinelBase">
+    <defName>MRHP_Sentinel</defName>
+    <label>sentinel</label>
+    <lifeStages>
+      <li>
+        <bodyGraphicData>
+          <texPath>Things/Pawn/Mechanoid/Sentinel/Normal/MRHP_Sentinel</texPath> <!-- Path to your PNGs -->
+          <graphicClass>Graphic_Multi</graphicClass>
+          <drawSize>3</drawSize>
+          <shadowData>
+            <volume>(0.6, 0.8, 0.6)</volume>
+          </shadowData>
+        </bodyGraphicData>
+      </li>
+    </lifeStages>
+  </PawnKindDef>
+  
+</Defs>
