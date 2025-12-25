@@ -44,6 +44,8 @@
         <!-- 3. INSTANT REACTION -->
         <li Class="JobGiver_ReactToCloseMeleeThreat" />
 
+        <li Class="MRHP.JobGiver_RobotSelfSeal" />
+
         <!-- 4. HOSTILE COMBAT -->
         <li Class="ThinkNode_ConditionalOfPlayerFaction">
           <invert>true</invert>
@@ -79,8 +81,6 @@
         <li Class="ThinkNode_Subtree">
           <treeDef>LordDuty</treeDef>
         </li>
-            
-        <li Class="MRHP.JobGiver_RobotSelfSeal" />
 
         <!-- 7. TAMED BEHAVIOR -->
         <li Class="ThinkNode_ConditionalOfPlayerFaction">

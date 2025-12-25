@@ -77,6 +77,19 @@
     <tags><li>MovingLimbCore</li></tags>
   </BodyPartDef>
 
+  <!-- FRONT (manipulator) LEGS -->
+  <BodyPartDef ParentName="MD_KeybugSoftBase">
+    <defName>MRHP_MechanicalLeg_Manipulator</defName>
+    <label>mechanical manipulator leg</label>
+    <hitPoints>20</hitPoints>
+    <solid>true</solid>
+    <bleedRate>0.0</bleedRate>
+    <tags>
+      <li>MovingLimbCore</li>
+      <li>ManipulationLimbCore</li>
+    </tags>
+  </BodyPartDef>
+
   <!-- 4. The Eyes (Lenses crack) -->
   <BodyPartDef ParentName="MD_KeybugSoftBase">
     <defName>MRHP_Photoreceptor</defName>

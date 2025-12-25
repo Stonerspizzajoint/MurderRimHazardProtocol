@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+  <!-- Only run this patch if Odyssey DLC is installed -->
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>Ludeon.RimWorld.Odyssey</li>
+    </mods>
+    <match Class="PatchOperationSequence">
+      <operations>
+
+        <!-- =============================== -->
+        <!-- Scarlands: Normal Spawns -->
+        <!-- =============================== -->
+        <li Class="PatchOperationAdd">
+          <xpath>Defs/BiomeDef[defName="Scarlands"]/wildAnimals</xpath>
+          <value>
+            <MRHP_ScrapBug>0.40</MRHP_ScrapBug>
+            <MRHP_KeyBug>0.10</MRHP_KeyBug>
+            <MRHP_GoldBug>0.02</MRHP_GoldBug>
+            <MRHP_RustyBug>0.50</MRHP_RustyBug>
+          </value>
+        </li>
+
+        <!-- =============================== -->
+        <!-- Scarlands: Pollution Spawns -->
+        <!-- =============================== -->
+        <li Class="PatchOperationAdd">
+          <xpath>Defs/BiomeDef[defName="Scarlands"]/pollutionWildAnimals</xpath>
+          <value>
+            <MRHP_ScrapBug>0.60</MRHP_ScrapBug>
+            <MRHP_KeyBug>0.15</MRHP_KeyBug>
+            <MRHP_GoldBug>0.03</MRHP_GoldBug>
+            <MRHP_RustyBug>0.70</MRHP_RustyBug>
+          </value>
+        </li>
+
+      </operations>
+    </match>
+  </Operation>
+
+</Patch>

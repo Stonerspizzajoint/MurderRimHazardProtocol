@@ -1,0 +1,85 @@
+<Patch>
+  <!-- =============================== -->
+  <!-- VANILLA BIOMES: NORMAL SPAWNS -->
+  <!-- =============================== -->
+
+  <Operation Class="PatchOperationSequence">
+    <operations>
+
+      <!-- Temperate Forest -->
+      <li Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName="TemperateForest"]/wildAnimals</xpath>
+        <value>
+          <MRHP_Sentinel>0.005</MRHP_Sentinel>
+        </value>
+      </li>
+
+      <!-- Arid Shrubland -->
+      <li Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName="AridShrubland"]/wildAnimals</xpath>
+        <value>
+          <MRHP_Sentinel>0.004</MRHP_Sentinel>
+        </value>
+      </li>
+
+      <!-- Boreal Forest -->
+      <li Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName="BorealForest"]/wildAnimals</xpath>
+        <value>
+          <MRHP_Sentinel>0.003</MRHP_Sentinel>
+        </value>
+      </li>
+
+      <!-- Desert -->
+      <li Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName="Desert"]/wildAnimals</xpath>
+        <value>
+          <MRHP_Sentinel>0.002</MRHP_Sentinel>
+        </value>
+      </li>
+
+    </operations>
+  </Operation>
+
+  <!-- ===================================== -->
+  <!-- VANILLA BIOMES: POLLUTION SPAWNS -->
+  <!-- ===================================== -->
+
+  <Operation Class="PatchOperationSequence">
+    <operations>
+
+      <!-- Temperate Forest (Pollution) -->
+      <li Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName="TemperateForest"]/pollutionWildAnimals</xpath>
+        <value>
+          <MRHP_Sentinel>0.02</MRHP_Sentinel>
+        </value>
+      </li>
+
+      <!-- Arid Shrubland (Pollution) -->
+      <li Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName="AridShrubland"]/pollutionWildAnimals</xpath>
+        <value>
+          <MRHP_Sentinel>0.018</MRHP_Sentinel>
+        </value>
+      </li>
+
+      <!-- Boreal Forest (Pollution) -->
+      <li Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName="BorealForest"]/pollutionWildAnimals</xpath>
+        <value>
+          <MRHP_Sentinel>0.015</MRHP_Sentinel>
+        </value>
+      </li>
+
+      <!-- Desert (Pollution) -->
+      <li Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName="Desert"]/pollutionWildAnimals</xpath>
+        <value>
+          <MRHP_Sentinel>0.012</MRHP_Sentinel>
+        </value>
+      </li>
+
+    </operations>
+  </Operation>
+</Patch>

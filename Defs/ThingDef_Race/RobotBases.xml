@@ -1,0 +1,595 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- ============================================== -->
+  <!--                ROBOT RACE BASES                -->
+  <!-- ============================================== -->
+  <ThingDef ParentName="BasePawn" Name="BaseJCJensonRobot" Abstract="True">
+    <soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
+    
+    <statBases>
+      <MarketValue>1000</MarketValue>
+      <MoveSpeed>4.0</MoveSpeed>
+      
+      <!-- TEMPERATURE & FIRE -->
+      <Flammability>0.7</Flammability> 
+      <ComfyTemperatureMin>-120</ComfyTemperatureMin>
+      <ComfyTemperatureMax>60</ComfyTemperatureMax>
+      <ArmorRating_Heat>0.50</ArmorRating_Heat>
+      
+      <!-- IMMUNITIES -->
+      <ToxicResistance>1</ToxicResistance>
+      <ToxicEnvironmentResistance>1</ToxicEnvironmentResistance>
+      <VacuumResistance MayRequire="ludeon.rimworld.odyssey">1</VacuumResistance>
+      <PsychicSensitivity>0</PsychicSensitivity>
+      <PainShockThreshold>1.0</PainShockThreshold>
+    
+      <!-- RESOURCES -->
+      <MeatAmount>0</MeatAmount>
+      <LeatherAmount>0</LeatherAmount>
+      <FilthRate>0</FilthRate>
+    </statBases>
+
+    <race>
+      <fleshType>MRHP_JCJensonRobotFlesh</fleshType> 
+      <bloodDef>MRC_FilthOil</bloodDef>
+      <canBeVacuumBurnt>false</canBeVacuumBurnt>
+      <renderTree>MRHP_JCJensonRobotRenderTree</renderTree>
+      
+      <!-- BIOLOGY SIMULATION -->
+      <hasGenders>false</hasGenders>
+      <disableMating>true</disableMating>
+      <foodType>None</foodType>
+      <lifeExpectancy>500</lifeExpectancy>
+      <intelligence>Animal</intelligence>
+      <hasMeat>false</hasMeat>
+      <hediffGiverSets>
+        <li>MRHP_JCJensonRobotStandard</li>
+      </hediffGiverSets>
+      <canBePredatorPrey>false</canBePredatorPrey>
+      
+      <!-- AGGRESSION DEFAULTS -->
+      <manhunterOnDamageChance>0</manhunterOnDamageChance>
+      <manhunterOnTameFailChance>0</manhunterOnTameFailChance>
+
+      <!-- SOUNDS -->
+      <soundCallIntervalRange>1000~2000</soundCallIntervalRange>
+      <soundCallIntervalFriendlyFactor>2</soundCallIntervalFriendlyFactor>
+    </race>
+    <recipes>
+      <li>Euthanize</li>
+    </recipes>
+  </ThingDef>
+
+<!-- Scrap Bug Race -->
+  <!-- ============================================== -->
+  <!--           SCRAP BUG PHYSICAL BASE              -->
+  <!-- ============================================== -->
+  <!-- This defines the body, stats, and tools. It does NOT define the diet/comps. -->
+  <ThingDef ParentName="BaseJCJensonRobot" Name="MRHP_ScrapBugPhysicalBase" Abstract="True">
+    <statBases>
+      <MoveSpeed>5.0</MoveSpeed> <!-- Fast, erratic movement -->
+      <ArmorRating_Blunt>0.0</ArmorRating_Blunt> 
+      <ArmorRating_Sharp>0.0</ArmorRating_Sharp>
+      <MeatAmount>0</MeatAmount>
+    </statBases>
+    <butcherProducts>
+      <Steel>5</Steel>
+    </butcherProducts>
+
+    <!-- === VISUALS === -->
+    <uiIconPath>Things/Pawn/Mechanoid/Scrap_Bug/MRHP_ScrapBug_east</uiIconPath>
+    
+    <!-- === INTERACTIONS === -->
+    <race>
+      <body>MRHP_ScrapBugBody</body>
+      <renderTree>MRHP_ScrapBugRender</renderTree>
+      <thinkTreeMain>MRHP_ScrapBugBehavior</thinkTreeMain>
+      <thinkTreeConstant>AnimalConstant</thinkTreeConstant>
+      <foodType>OmnivoreHuman</foodType> 
+      
+      <!-- RAT SIZED -->
+      <baseBodySize>0.2</baseBodySize>
+      <baseHealthScale>0.25</baseHealthScale>
+      
+      <trainability>Intermediate</trainability>
+      <petness>0.1</petness>
+      
+      <!-- MOVEMENT -->
+      <lifeStageAges>
+        <li>
+          <def>MRHP_BuiltJCJensonRobot</def>
+          <minAge>0</minAge>
+          <soundWounded>MRHP_ScrapBug_Wounded</soundWounded>
+          <soundDeath>MRHP_ScrapBug_Death</soundDeath>
+          <soundCall>MRHP_ScrapBug_Call</soundCall>
+          <soundAngry>MRHP_ScrapBug_Angry</soundAngry>
+        </li>
+      </lifeStageAges>
+      <soundMeleeHitPawn>Pawn_Melee_SmallScratch_HitPawn</soundMeleeHitPawn>
+      <soundMeleeHitBuilding>Pawn_Melee_SmallScratch_HitBuilding</soundMeleeHitBuilding>
+      <soundMeleeMiss>Pawn_Melee_SmallScratch_Miss</soundMeleeMiss>
+    </race>
+    
+    <!-- === COMBAT === -->
+    <tools>
+      <li>
+        <label>metal teeth</label>
+        <capacities>
+          <li>Bite</li>
+        </capacities>
+        <power>3</power>
+        <cooldownTime>1.8</cooldownTime>
+        <linkedBodyPartsGroup>Mouth</linkedBodyPartsGroup>
+      </li>
+      <li>
+        <label>sharp leg</label>
+        <capacities>
+          <li>Scratch</li>
+        </capacities>
+        <power>2</power>
+        <cooldownTime>1.2</cooldownTime>
+        <linkedBodyPartsGroup>Legs</linkedBodyPartsGroup>
+      </li>
+      <li>
+        <label>head</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>1</power>
+        <cooldownTime>2</cooldownTime>
+        <linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
+        <chanceFactor>0.1</chanceFactor>
+      </li>
+    </tools>
+  </ThingDef>
+
+  <!-- ============================================== -->
+  <!--           DIET VARIANT: REPRODUCING            -->
+  <!-- ============================================== -->
+  <!-- Inherits the physical body, adds the diet comp with Fission ENABLED -->
+  <ThingDef ParentName="MRHP_ScrapBugPhysicalBase" Name="MRHP_ScrapBug_Repro" Abstract="True">
+    <comps>
+        <li Class="VEF.AnimalBehaviours.CompProperties_Floating" />
+        <li Class="VEF.AnimalBehaviours.CompProperties_NoFilth" />
+        <li Class="MRHP.CompProperties_ScrapEater">
+            <!-- === WHAT THEY EAT === -->
+            <customThingToEat>
+                <li>Wastepack</li>
+            </customThingToEat >
+            <prioritizeCorpses>true</prioritizeCorpses>
+            <corpseScrapEfficiency>0.5</corpseScrapEfficiency>
+            <eatThingCategories>
+               <li>Corpses</li>
+               <li>CorpsesAnimal</li>
+               <li>CorpsesInsect</li>
+               <li>CorpsesHumanlike</li>
+               <li>CorpsesMechanoid</li>
+            </eatThingCategories>
+
+            <filthConversionRules>
+              <!-- Building (Rubble/Debris -> Steel/Wood) -->
+              <li>
+                <keywords>
+                  <li>Rubble</li>
+                  <li>Debris</li>
+                </keywords>
+                <thingToSpawn>Steel</thingToSpawn>
+                <chance>0.05</chance>
+              </li>
+              <li>
+                <keywords>
+                  <li>Building</li>
+                  <li>Debris</li>
+                </keywords>
+                <thingToSpawn>WoodLog</thingToSpawn>
+                <chance>0.05</chance>
+              </li>
+              <!-- METAL (Metal -> Steel) -->
+              <li>
+                <keywords>
+                  <li>Slag</li>
+                  <li>Machine</li>
+                </keywords>
+                <thingToSpawn>Steel</thingToSpawn>
+                <chance>0.5</chance>
+              </li>
+              <!-- MACHINE (Machine -> Plasteel) -->
+              <li>
+                <keywords>
+                  <li>Machine</li>
+                </keywords>
+                <thingToSpawn>Plasteel</thingToSpawn>
+                <chance>0.1</chance>
+              </li>
+              <!-- ORGANICS (Oil/Bio -> Chemfuel) -->
+              <li>
+                <keywords>
+                  <li>Oil</li>
+                  <li>Blood</li>
+                  <li>Flesh</li>
+                  <li>Slime</li>
+                  <li>Hair</li>
+                  <li>Vomit</li>
+                  <li>Bile</li>
+                  <li>Acid</li>
+                  <li>Animal</li>
+                  <li>Corpse</li>
+                  <li>Foam</li>
+                  <li>Fluid</li>
+                  <li>Wood</li>
+                </keywords>
+                <thingToSpawn>Chemfuel</thingToSpawn>
+                <chance>0.2</chance>
+              </li>
+              <!-- NEUTROAMINE (Oil -> Neutroamine) -->
+              <li>
+                <keywords>
+                  <li>Oil</li>
+                  <li>Neutroamine</li>
+                </keywords>
+                <thingToSpawn>Neutroamine</thingToSpawn>
+                <chance>0.5</chance>
+              </li>
+              <!-- FUEL (Anything with Fuel keyword -> Chemfuel) -->
+              <li>
+                <keywords>
+                  <li>Fuel</li>
+                </keywords>
+                <thingToSpawn>Chemfuel</thingToSpawn>
+                <chance>0.9</chance>
+              </li>
+            </filthConversionRules>
+
+            <filthKeywords>
+                <li>Trash</li>
+                <li>Dirt</li>
+                <li>Sand</li>
+            </filthKeywords>
+
+            <!-- === EATING MECHANICS === -->
+            <nutrition>1</nutrition>
+            <fullyDestroyThing>false</fullyDestroyThing> 
+            <percentageOfDestruction>0.05</percentageOfDestruction>
+
+            <!-- === SCAVENGING BEHAVIOR === -->
+            <digThingIfMapEmpty>false</digThingIfMapEmpty>
+            <thingToDigIfMapEmpty>Filth_Trash</thingToDigIfMapEmpty>
+            <customAmountToDig>1</customAmountToDig>
+
+            <!-- === POWER DRAIN === -->
+            <drainBattery>true</drainBattery>
+            <percentageDrain>0.05</percentageDrain>
+            
+            <!-- === EVOLUTION (ENABLED) === -->
+            <fissionAfterXFeedings>true</fissionAfterXFeedings>
+            <DuplicationByChance>true</DuplicationByChance>
+            <duplicationChanceRange>5~10</duplicationChanceRange>
+            <duplicationBaseChance>0.10</duplicationBaseChance>
+            <duplicationPeakChance>0.95</duplicationPeakChance>
+            <advanceLifeStage>true</advanceLifeStage>
+            <numberOfOffspring>1</numberOfOffspring>
+            <fissionOnlyIfTamed>false</fissionOnlyIfTamed>
+
+            <!-- == MATERIAL NEEDS == -->
+            <materialNeedLabel>Material intake</materialNeedLabel>
+            <materialNeedDescription>Scrap-Bugs require scrap to operate efficiently. Low intake reduces performance but is nonlethal.</materialNeedDescription>
+            <materialNeedHediffDefName>MRHP_MaterialDeprived</materialNeedHediffDefName>
+        </li>
+    </comps>
+  </ThingDef>
+
+  <!-- ============================================== -->
+  <!--           DIET VARIANT: STERILE                -->
+  <!-- ============================================== -->
+  <!-- Inherits the physical body, adds the diet comp with Fission DISABLED -->
+  <!-- Note: We duplicate the comp here because inheriting from the Repro version and trying to override a list item is unreliable in XML -->
+  <ThingDef ParentName="MRHP_ScrapBugPhysicalBase" Name="MRHP_ScrapBug_NoRepro" Abstract="True">
+    <comps>
+        <li Class="VEF.AnimalBehaviours.CompProperties_Floating" />
+        <li Class="VEF.AnimalBehaviours.CompProperties_NoFilth" />
+        <li Class="MRHP.CompProperties_ScrapEater">
+            <!-- === WHAT THEY EAT === -->
+            <customThingToEat>
+                <li>Wastepack</li>
+            </customThingToEat >
+            <prioritizeCorpses>true</prioritizeCorpses>
+            <corpseScrapEfficiency>0.5</corpseScrapEfficiency>
+            <eatThingCategories>
+               <li>Corpses</li>
+               <li>CorpsesAnimal</li>
+               <li>CorpsesInsect</li>
+               <li>CorpsesHumanlike</li>
+               <li>CorpsesMechanoid</li>
+            </eatThingCategories>
+
+            <filthConversionRules>
+              <!-- Building (Rubble/Debris -> Steel/Wood) -->
+              <li>
+                <keywords>
+                  <li>Rubble</li>
+                  <li>Debris</li>
+                </keywords>
+                <thingToSpawn>Steel</thingToSpawn>
+                <chance>0.05</chance>
+              </li>
+              <li>
+                <keywords>
+                  <li>Building</li>
+                  <li>Debris</li>
+                </keywords>
+                <thingToSpawn>WoodLog</thingToSpawn>
+                <chance>0.05</chance>
+              </li>
+              <!-- METAL (Metal -> Steel) -->
+              <li>
+                <keywords>
+                  <li>Slag</li>
+                  <li>Machine</li>
+                </keywords>
+                <thingToSpawn>Steel</thingToSpawn>
+                <chance>0.5</chance>
+              </li>
+              <!-- MACHINE (Machine -> Plasteel) -->
+              <li>
+                <keywords>
+                  <li>Machine</li>
+                </keywords>
+                <thingToSpawn>Plasteel</thingToSpawn>
+                <chance>0.1</chance>
+              </li>
+              <!-- ORGANICS (Oil/Bio -> Chemfuel) -->
+              <li>
+                <keywords>
+                  <li>Oil</li>
+                  <li>Blood</li>
+                  <li>Flesh</li>
+                  <li>Slime</li>
+                  <li>Hair</li>
+                  <li>Vomit</li>
+                  <li>Bile</li>
+                  <li>Acid</li>
+                  <li>Animal</li>
+                  <li>Corpse</li>
+                  <li>Foam</li>
+                  <li>Fluid</li>
+                  <li>Wood</li>
+                </keywords>
+                <thingToSpawn>Chemfuel</thingToSpawn>
+                <chance>0.2</chance>
+              </li>
+              <!-- NEUTROAMINE (Oil -> Neutroamine) -->
+              <li>
+                <keywords>
+                  <li>Oil</li>
+                  <li>Neutroamine</li>
+                </keywords>
+                <thingToSpawn>Neutroamine</thingToSpawn>
+                <chance>0.5</chance>
+              </li>
+              <!-- FUEL (Anything with Fuel keyword -> Chemfuel) -->
+              <li>
+                <keywords>
+                  <li>Fuel</li>
+                </keywords>
+                <thingToSpawn>Chemfuel</thingToSpawn>
+                <chance>0.9</chance>
+              </li>
+            </filthConversionRules>
+
+            <filthKeywords>
+                <li>Trash</li>
+                <li>Dirt</li>
+                <li>Sand</li>
+            </filthKeywords>
+
+            <!-- === EATING MECHANICS === -->
+            <nutrition>1</nutrition>
+            <fullyDestroyThing>false</fullyDestroyThing> 
+            <percentageOfDestruction>0.05</percentageOfDestruction>
+
+            <!-- === SCAVENGING BEHAVIOR === -->
+            <digThingIfMapEmpty>false</digThingIfMapEmpty>
+            <thingToDigIfMapEmpty>Filth_Trash</thingToDigIfMapEmpty>
+            <customAmountToDig>1</customAmountToDig>
+
+            <!-- === POWER DRAIN === -->
+            <drainBattery>true</drainBattery>
+            <percentageDrain>0.05</percentageDrain>
+            
+            <!-- === EVOLUTION (DISABLED) === -->
+            <fissionAfterXFeedings>false</fissionAfterXFeedings>
+
+            <!-- == MATERIAL NEEDS == -->
+            <materialNeedLabel>Material intake</materialNeedLabel>
+            <materialNeedDescription>Scrap-Bugs require scrap to operate efficiently. Low intake reduces performance but is nonlethal.</materialNeedDescription>
+            <materialNeedHediffDefName>MRHP_MaterialDeprived</materialNeedHediffDefName>
+        </li>
+    </comps>
+  </ThingDef>
+
+<!-- Sentinel Race -->
+  <ThingDef ParentName="BaseJCJensonRobot" Name="MRHP_SentinelBase" Abstract="True">
+    <statBases>
+      <MoveSpeed>6.5</MoveSpeed> <!-- Fast! Faster than a human (4.6) -->
+      <ArmorRating_Blunt>0.20</ArmorRating_Blunt>
+      <ArmorRating_Sharp>0.35</ArmorRating_Sharp>
+      <EMPResistance>0.5</EMPResistance> <!-- Partial resistance to EMP -->
+    </statBases>
+    <!-- NEW: Butcher Products -->
+    <butcherProducts>
+      <Steel>40</Steel>
+      <Plasteel>15</Plasteel>
+      <ComponentIndustrial>2</ComponentIndustrial>
+    </butcherProducts>
+    <race>
+      <body>MRHP_SentinelBody</body> <!-- We need to define this body -->
+      <hasGenders>true</hasGenders>
+      <baseBodySize>1.3</baseBodySize>
+      <baseHealthScale>1.5</baseHealthScale>
+      <trainability>Advanced</trainability> <!-- Required for Haul/Obedience logic to work -->
+      <manhunterOnDamageChance>0.5</manhunterOnDamageChance> <!-- 50% chance to attack if hurt -->
+      <manhunterOnTameFailChance>0.2</manhunterOnTameFailChance> <!-- 20% chance to attack if taming fails -->
+      <thinkTreeMain>MRHP_SentinelBehavior</thinkTreeMain>
+      <thinkTreeConstant>AnimalConstant</thinkTreeConstant>
+      <renderTree>MRHP_SentinelRender</renderTree>
+      <petness>0.8</petness>
+      <lifeStageAges>
+        <li>
+          <def>MRHP_BuiltJCJensonRobot</def>
+          <minAge>0</minAge>
+          <soundWounded>MRHP_Sentinel_Wounded</soundWounded> <!-- Placeholders until you add yours -->
+          <soundAngry>MRHP_Sentinel_Angry</soundAngry>
+          <soundDeath>MRHP_Sentinel_Death</soundDeath>
+          <soundCall>MRHP_Sentinel_Call</soundCall>
+        </li>
+      </lifeStageAges>
+    </race>
+    <tools>
+      <!-- Head Butt -->
+      <li>
+        <label>head</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>12</power>
+        <cooldownTime>2.0</cooldownTime>
+        <linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
+        <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+      </li>
+
+      <!-- NEW: Razor Fangs -->
+      <li>
+        <label>razor fangs</label>
+        <capacities>
+          <li>Bite</li>
+        </capacities>
+        <power>16</power> <!-- Strong bite -->
+        <cooldownTime>2.0</cooldownTime>
+        <linkedBodyPartsGroup>Teeth</linkedBodyPartsGroup> <!-- Must match the BodyDef group -->
+        <chanceFactor>0.6</chanceFactor> <!-- 60% chance to bite vs claw/tail -->
+        <soundMeleeHit>Pawn_Melee_MechanoidSlash_HitPawn</soundMeleeHit>
+        <soundMeleeMiss>Pawn_Melee_MechanoidSlash_Miss</soundMeleeMiss>
+      </li>
+
+      <!-- NEW: Left Claw -->
+      <li>
+        <label>left claw</label>
+        <capacities>
+          <li>Scratch</li>
+          <li>Cut</li> <!-- Can cause bleeding -->
+        </capacities>
+        <power>14</power>
+        <cooldownTime>1.5</cooldownTime> <!-- Fast attack -->
+        <linkedBodyPartsGroup>FrontLeftClaw</linkedBodyPartsGroup>
+        <surpriseAttack>
+          <extraMeleeDamages>
+            <li>
+              <def>Stun</def>
+              <amount>14</amount>
+            </li>
+          </extraMeleeDamages>
+        </surpriseAttack>
+      </li>
+
+      <!-- NEW: Right Claw -->
+      <li>
+        <label>right claw</label>
+        <capacities>
+          <li>Scratch</li>
+          <li>Cut</li>
+        </capacities>
+        <power>14</power>
+        <cooldownTime>1.5</cooldownTime>
+        <linkedBodyPartsGroup>FrontRightClaw</linkedBodyPartsGroup>
+        <surpriseAttack>
+          <extraMeleeDamages>
+            <li>
+              <def>Stun</def>
+              <amount>14</amount>
+            </li>
+          </extraMeleeDamages>
+        </surpriseAttack>
+      </li>
+
+      <!-- Tail Whip -->
+      <li>
+        <label>tail</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>18</power>
+        <cooldownTime>2.5</cooldownTime>
+        <linkedBodyPartsGroup>TailAttackTool</linkedBodyPartsGroup>
+        <chanceFactor>0.5</chanceFactor> <!-- Uses claws more often than tail -->
+      </li>
+    </tools>
+    <comps>
+      <li Class="VEF.AnimalBehaviours.CompProperties_DoesntFlee" />
+    </comps>
+  </ThingDef>
+
+  <!-- ============================================== -->
+  <!--              PAWNKIND RACE BASES               -->
+  <!-- ============================================== -->
+
+  <!-- Abstract Base for JCJenson Robots -->
+  <PawnKindDef Name="BaseJCJensonRobotKind" Abstract="True">
+    <aiAvoidCover>true</aiAvoidCover>
+    <canStrip>false</canStrip>
+    <ignoresPainShock>true</ignoresPainShock>
+    <canOpenDoors>false</canOpenDoors>
+    <aiAvoidCover>true</aiAvoidCover>
+  </PawnKindDef>
+
+  <!-- Abstract Base for Keybugs -->
+  <PawnKindDef ParentName="BaseJCJensonRobotKind" Name="MRHP_ScrapBugKindBase" Abstract="True">
+    <race>MRHP_ScrapBugRace</race>
+    <combatPower>20</combatPower> <!-- Extremely low threat level -->
+    <collidesWithPawns>false</collidesWithPawns> <!-- Can move through pawns -->
+    <immuneToTraps>true</immuneToTraps> <!-- Too small to trigger traps -->
+    <canUseAvoidGrid>false</canUseAvoidGrid>
+    <lifeStages>
+      <li>
+        <bodyGraphicData>
+          <name>Blank</name>
+          <texPath>Things/Pawn/Mechanoid/Scrap_Bug/MRHP_Empty</texPath>
+          <graphicClass>Graphic_Single</graphicClass>
+        </bodyGraphicData>
+      </li>
+    </lifeStages>
+    <modExtensions>
+      <li Class="VEF.Graphics.TaggedDefProperties">
+        <taggedColors>
+          <MRHP_LightColor>(228, 149, 86)</MRHP_LightColor>
+          <MRHP_BodyColor>(255, 255, 255)</MRHP_BodyColor>
+        </taggedColors>
+      </li>
+    </modExtensions>
+  </PawnKindDef>
+
+  <!-- Abstract Base for Sentinels -->
+  <PawnKindDef ParentName="BaseJCJensonRobotKind" Name="SentinelBase" Abstract="True">
+    <race>MRHP_SentinelRace</race>
+    <abilities>
+      <li>MRHP_SentinelFlash</li>
+      <li>MRHP_SentinelPounce</li>
+    </abilities>
+    <lifeStages>
+      <li>
+        <bodyGraphicData>
+          <name>Blank</name>
+          <texPath>Things/Pawn/Mechanoid/Sentinel/MRHP_Empty</texPath>
+          <graphicClass>Graphic_Single</graphicClass>
+        </bodyGraphicData>
+      </li>
+    </lifeStages>
+    <modExtensions Inherit="false">
+      <li Class="VEF.Graphics.TaggedDefProperties">
+        <taggedColors>
+          <MRHP_LightColor>(0, 255, 255)</MRHP_LightColor>
+        </taggedColors>
+      </li>
+    </modExtensions>
+  </PawnKindDef>
+</Defs>

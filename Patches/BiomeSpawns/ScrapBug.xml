@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+  <Operation Class="PatchOperationSequence">
+    <operations>
+
+      <!-- =============================== -->
+      <!-- Temperate Forest -->
+      <!-- =============================== -->
+      <li Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName="TemperateForest"]/wildAnimals</xpath>
+        <value>
+          <MRHP_ScrapBug>0.10</MRHP_ScrapBug>
+          <MRHP_KeyBug>0.02</MRHP_KeyBug>
+          <MRHP_GoldBug>0.005</MRHP_GoldBug>
+          <MRHP_RustyBug>0.03</MRHP_RustyBug>
+        </value>
+      </li>
+
+      <!-- =============================== -->
+      <!-- Arid Shrubland -->
+      <!-- =============================== -->
+      <li Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName="AridShrubland"]/wildAnimals</xpath>
+        <value>
+          <MRHP_ScrapBug>0.08</MRHP_ScrapBug>
+          <MRHP_KeyBug>0.015</MRHP_KeyBug>
+          <MRHP_GoldBug>0.004</MRHP_GoldBug>
+          <MRHP_RustyBug>0.04</MRHP_RustyBug>
+        </value>
+      </li>
+
+      <!-- =============================== -->
+      <!-- Boreal Forest -->
+      <!-- =============================== -->
+      <li Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName="BorealForest"]/wildAnimals</xpath>
+        <value>
+          <MRHP_ScrapBug>0.06</MRHP_ScrapBug>
+          <MRHP_KeyBug>0.01</MRHP_KeyBug>
+          <MRHP_GoldBug>0.003</MRHP_GoldBug>
+          <MRHP_RustyBug>0.02</MRHP_RustyBug>
+        </value>
+      </li>
+
+      <!-- =============================== -->
+      <!-- Desert -->
+      <!-- =============================== -->
+      <li Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName="Desert"]/wildAnimals</xpath>
+        <value>
+          <MRHP_ScrapBug>0.05</MRHP_ScrapBug>
+          <MRHP_KeyBug>0.01</MRHP_KeyBug>
+          <MRHP_GoldBug>0.002</MRHP_GoldBug>
+          <MRHP_RustyBug>0.05</MRHP_RustyBug>
+        </value>
+      </li>
+
+      <!-- =============================== -->
+      <!-- Tropical Rainforest -->
+      <!-- =============================== -->
+      <li Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName="TropicalRainforest"]/wildAnimals</xpath>
+        <value>
+          <MRHP_ScrapBug>0.12</MRHP_ScrapBug>
+          <MRHP_KeyBug>0.02</MRHP_KeyBug>
+          <MRHP_GoldBug>0.005</MRHP_GoldBug>
+          <MRHP_RustyBug>0.03</MRHP_RustyBug>
+        </value>
+      </li>
+
+    </operations>
+  </Operation>
+
+  <Operation Class="PatchOperationSequence">
+    <operations>
+
+      <!-- =============================== -->
+      <!-- Temperate Forest (Pollution) -->
+      <!-- =============================== -->
+      <li Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName="TemperateForest"]/pollutionWildAnimals</xpath>
+        <value>
+          <MRHP_ScrapBug>0.20</MRHP_ScrapBug>
+          <MRHP_KeyBug>0.05</MRHP_KeyBug>
+          <MRHP_GoldBug>0.01</MRHP_GoldBug>
+          <MRHP_RustyBug>0.25</MRHP_RustyBug>
+        </value>
+      </li>
+
+      <!-- =============================== -->
+      <!-- Arid Shrubland (Pollution) -->
+      <!-- =============================== -->
+      <li Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName="AridShrubland"]/pollutionWildAnimals</xpath>
+        <value>
+          <MRHP_ScrapBug>0.18</MRHP_ScrapBug>
+          <MRHP_KeyBug>0.04</MRHP_KeyBug>
+          <MRHP_GoldBug>0.01</MRHP_GoldBug>
+          <MRHP_RustyBug>0.30</MRHP_RustyBug>
+        </value>
+      </li>
+
+      <!-- =============================== -->
+      <!-- Boreal Forest (Pollution) -->
+      <!-- =============================== -->
+      <li Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName="BorealForest"]/pollutionWildAnimals</xpath>
+        <value>
+          <MRHP_ScrapBug>0.15</MRHP_ScrapBug>
+          <MRHP_KeyBug>0.03</MRHP_KeyBug>
+          <MRHP_GoldBug>0.01</MRHP_GoldBug>
+          <MRHP_RustyBug>0.20</MRHP_RustyBug>
+        </value>
+      </li>
+
+      <!-- =============================== -->
+      <!-- Desert (Pollution) -->
+      <!-- =============================== -->
+      <li Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName="Desert"]/pollutionWildAnimals</xpath>
+        <value>
+          <MRHP_ScrapBug>0.12</MRHP_ScrapBug>
+          <MRHP_KeyBug>0.03</MRHP_KeyBug>
+          <MRHP_GoldBug>0.01</MRHP_GoldBug>
+          <MRHP_RustyBug>0.35</MRHP_RustyBug>
+        </value>
+      </li>
+
+      <!-- =============================== -->
+      <!-- Tropical Rainforest (Pollution) -->
+      <!-- =============================== -->
+      <li Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName="TropicalRainforest"]/pollutionWildAnimals</xpath>
+        <value>
+          <MRHP_ScrapBug>0.22</MRHP_ScrapBug>
+          <MRHP_KeyBug>0.05</MRHP_KeyBug>
+          <MRHP_GoldBug>0.01</MRHP_GoldBug>
+          <MRHP_RustyBug>0.25</MRHP_RustyBug>
+        </value>
+      </li>
+
+    </operations>
+  </Operation>
+</Patch>

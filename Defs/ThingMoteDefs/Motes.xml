@@ -23,6 +23,7 @@
       <texPath>Things/Mote/BootLooped</texPath>
       <graphicClass>Graphic_Mote</graphicClass>
       <shaderType>MoteGlow</shaderType> <!-- Makes it bright/visible -->
+      <drawSize>0.7</drawSize>
     </graphicData>
     <altitudeLayer>MoteOverhead</altitudeLayer>
     <mote>

@@ -1,12 +1,4 @@
 <Defs>
-  <PawnKindDef Name="BaseJCJensonRobotKind" Abstract="True">
-    <aiAvoidCover>true</aiAvoidCover>
-    <canStrip>false</canStrip>
-    <ignoresPainShock>true</ignoresPainShock>
-    <canOpenDoors>false</canOpenDoors>
-    <aiAvoidCover>true</aiAvoidCover>
-  </PawnKindDef>
-
   <PawnKindDef Name="MRHP_DeadPawnKind_Base" Abstract="True">
     <useFactionXenotypes>false</useFactionXenotypes>
     <defaultFactionType>Ancients</defaultFactionType>

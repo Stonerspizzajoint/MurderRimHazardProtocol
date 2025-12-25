@@ -1,0 +1,8 @@
+<Defs>
+    <LifeStageDef>
+        <defName>MRHP_BuiltJCJensonRobot</defName>
+        <label>fully-built</label>
+        <visible>false</visible>
+        <reproductive>true</reproductive>
+    </LifeStageDef>
+</Defs>

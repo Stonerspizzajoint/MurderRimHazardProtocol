@@ -78,4 +78,71 @@ Breakout chance is calculated based on Melee skill, repeated struggle attempts, 
     </comps>
   </HediffDef>
 
+  <HediffDef>
+    <defName>MRHP_MaterialDeprived</defName>
+    <label>material deprivation</label>
+    <description>Low intake of scrap material reduces efficiency and responsiveness in mechanical pawns. This condition is unpleasant and impairs performance but does not cause death. Recovery occurs when material intake resumes.</description>
+    <scenarioCanAdd>false</scenarioCanAdd>
+    <stages>
+      <!-- Warning stage -->
+      <li>
+        <label>trivial</label>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.05</offset>
+          </li>
+        </capMods>
+      </li>
+
+      <!-- Minor stage -->
+      <li>
+        <minSeverity>0.2</minSeverity>
+        <label>minor</label>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.10</offset>
+          </li>
+        </capMods>
+      </li>
+
+      <!-- Moderate stage -->
+      <li>
+        <minSeverity>0.4</minSeverity>
+        <label>moderate</label>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.20</offset>
+          </li>
+        </capMods>
+      </li>
+
+      <!-- Severe stage -->
+      <li>
+        <minSeverity>0.6</minSeverity>
+        <label>severe</label>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.30</offset>
+          </li>
+        </capMods>
+      </li>
+
+      <!-- Critical stage -->
+      <li>
+        <minSeverity>0.8</minSeverity>
+        <label>critical</label>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <setMax>0.1</setMax>
+          </li>
+        </capMods>
+      </li>
+    </stages>
+  </HediffDef>
+
 </Defs>

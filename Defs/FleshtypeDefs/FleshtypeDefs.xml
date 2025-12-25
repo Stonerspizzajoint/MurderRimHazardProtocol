@@ -1,7 +1,7 @@
 <Defs>
 	<FleshTypeDef>
 		<defName>MRHP_JCJensonRobotFlesh</defName>
-		<corpseCategory>CorpsesAnimal</corpseCategory>
+		<corpseCategory>CorpsesMechanoid</corpseCategory>
 		<damageEffecter>MRC_Damage_HitDrone</damageEffecter>
 		<genericWounds>
 			<li>

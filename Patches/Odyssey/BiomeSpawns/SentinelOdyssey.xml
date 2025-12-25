@@ -1,0 +1,34 @@
+<Patch>
+  <!-- ========================================================= -->
+  <!-- ODYSSEY DLC: Scarlands biome (conditional) -->
+  <!-- ========================================================= -->
+
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>Ludeon.RimWorld.Odyssey</li>
+    </mods>
+
+    <match Class="PatchOperationSequence">
+      <operations>
+
+        <!-- Scarlands (normal) -->
+        <li Class="PatchOperationAdd">
+          <xpath>Defs/BiomeDef[defName="Scarlands"]/wildAnimals</xpath>
+          <value>
+            <MRHP_Sentinel>0.05</MRHP_Sentinel> <!-- Much more common -->
+          </value>
+        </li>
+
+        <!-- Scarlands (pollution) -->
+        <li Class="PatchOperationAdd">
+          <xpath>Defs/BiomeDef[defName="Scarlands"]/pollutionWildAnimals</xpath>
+          <value>
+            <MRHP_Sentinel>0.10</MRHP_Sentinel> <!-- Dominant spawn -->
+          </value>
+        </li>
+
+      </operations>
+    </match>
+  </Operation>
+
+</Patch>
